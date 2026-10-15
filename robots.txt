@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://proto3d.eu/sitemap.xml

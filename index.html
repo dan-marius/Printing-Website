@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>proto3d | Printare 3D la comandă și design 3D</title>
+<meta name="description" content="Printare 3D la comandă, design și modelare 3D. Calculează un preț estimativ și cere o ofertă prin telefon, WhatsApp sau formular.">
+<link rel="canonical" href="https://proto3d.eu/">
+<link rel="alternate" hreflang="ro" href="https://proto3d.eu/">
+<link rel="alternate" hreflang="en" href="https://proto3d.eu/en/">
+<link rel="alternate" hreflang="x-default" href="https://proto3d.eu/">
+<meta property="og:title" content="proto3d | Printare 3D la comandă și design 3D">
+<meta property="og:description" content="Printare 3D la comandă, design și modelare 3D. Calculează un preț estimativ și cere o ofertă prin telefon, WhatsApp sau formular.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://proto3d.eu/">
+<meta name="theme-color" content="#ff6a1a">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="/">proto<b>3d</b></a>
+    <nav aria-label="Main">
+      <a href="#services">Servicii</a>
+      <a href="#gallery">Galerie</a>
+      <a href="#calculator">Calculator</a>
+      <a href="#contact">Contact</a>
+      <a class="lang" href="/en/" hreflang="en" lang="en" title="View in English">EN</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <h1>Din idee, obiect real.</h1>
+    <p class="lead">Printare 3D la comandă și design 3D: de la un breloc personalizat la o piesă funcțională sau un prototip. Estimezi prețul în câteva secunde, apoi confirmăm împreună.</p>
+    <div class="actions">
+      <a class="btn primary" href="#calculator">Calculează prețul</a>
+      <a class="btn" data-tel href="tel:+40700000000">Sună acum</a>
+      <a class="btn" data-wa data-wa-text="Bună! Aș dori o ofertă pentru printare 3D." href="https://wa.me/40700000000?text=Bun%C4%83!%20A%C8%99%20dori%20o%20ofert%C4%83%20pentru%20printare%203D." target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="wrap block">
+  <h2>Ce facem</h2>
+  <div class="cards">
+    <article class="card"><h3>Printare 3D la comandă</h3><p>Ai deja un model? Îl printăm în materialul și culoarea potrivite.</p></article>
+    <article class="card"><h3>Design și modelare 3D</h3><p>Pornim de la o schiță sau o poză și creăm modelul 3D pentru tine, facturat pe ore.</p></article>
+    <article class="card"><h3>Prototipuri și piese mici</h3><p>Piese de schimb, suporturi, organizatoare, machete: rapid și la cantități mici.</p></article>
+  </div>
+</section>
+
+<section id="gallery" class="wrap block">
+  <h2>Lucrări</h2>
+  <p class="muted">Câteva exemple de obiecte printate.</p>
+  <div class="grid">
+    <figure><div class="ph" aria-hidden="true"><span>3D</span></div><figcaption>Breloc personalizat</figcaption></figure>
+    <figure><div class="ph" aria-hidden="true"><span>3D</span></div><figcaption>Suport birou</figcaption></figure>
+    <figure><div class="ph" aria-hidden="true"><span>3D</span></div><figcaption>Figurină</figcaption></figure>
+    <figure><div class="ph" aria-hidden="true"><span>3D</span></div><figcaption>Piesă funcțională</figcaption></figure>
+    <figure><div class="ph" aria-hidden="true"><span>3D</span></div><figcaption>Prototip</figcaption></figure>
+    <figure><div class="ph" aria-hidden="true"><span>3D</span></div><figcaption>Organizator</figcaption></figure>
+  </div>
+</section>
+
+<section id="calculator" class="wrap block">
+  <h2>Calculator de preț</h2>
+  <p class="muted">Un preț estimativ. Prețul final îl confirmăm după ce ne spui detaliile.</p>
+  <div class="calc">
+    <div class="inputs">
+      <div class="row">
+        <label for="hours"><span class="name">Ore de design 3D</span><span class="price">Tarif: <span id="rate"></span></span></label>
+        <input id="hours" type="number" min="0" step="0.5" value="0" inputmode="decimal">
+      </div>
+      <h3>Produse</h3>
+      <div id="products"></div>
+      <h3>Opțiuni</h3>
+      <div id="extras"></div>
+    </div>
+    <aside class="quote" aria-live="polite">
+      <h3>Estimarea ta</h3>
+      <ul id="quote-lines"></ul>
+      <div class="total"><span>Total estimat</span><strong id="quote-total"></strong></div>
+      <p id="quote-note" class="muted small"></p>
+      <a id="send-wa" class="btn primary" href="https://wa.me/40700000000" target="_blank" rel="noopener">Trimite pe WhatsApp</a>
+      <button id="send-form" class="btn" type="button">Trimite prin formular</button>
+    </aside>
+  </div>
+</section>
+
+<section id="contact" class="wrap block">
+  <h2>Contact</h2>
+  <p class="muted">Spune-ne ce ai nevoie. Poți atașa modelul (STL) prin e-mail sau WhatsApp.</p>
+  <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="">
+    <input type="hidden" name="subject" value="Cerere de ofertă de pe proto3d.eu">
+    <input type="hidden" name="from_name" value="proto3d.eu">
+    <input type="hidden" name="language" value="ro">
+    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <label>Nume<input name="name" required autocomplete="name"></label>
+    <label>Telefon sau e-mail<input name="contact" required autocomplete="email"></label>
+    <label>Mesaj<textarea id="message" name="message" rows="6" required></textarea></label>
+    <button class="btn primary" type="submit">Trimite cererea</button>
+    <p id="form-status" role="status" class="small"></p>
+  </form>
+  <p class="direct">Sau contactează-ne direct:
+    <a data-tel href="tel:+40700000000">+40700000000</a> ·
+    <a data-wa data-wa-text="Bună! Aș dori o ofertă pentru printare 3D." href="https://wa.me/40700000000" target="_blank" rel="noopener">WhatsApp</a> ·
+    <a data-mail href="mailto:hello@proto3d.eu">hello@proto3d.eu</a>
+  </p>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 proto3d.eu · Toate drepturile rezervate.</div>
+</footer>
+
+<script>window.I18N={"calc":{"design":"Design 3D","waIntro":"Bună! Aș dori o ofertă:","estTotal":"Total estimat","empty":"Alege ore de design sau produse pentru a vedea estimarea.","minNote":"Comanda minimă este {min}."},"form":{"sending":"Se trimite...","ok":"Mulțumim! Am primit cererea și revenim cât mai curând.","fail":"Nu s-a putut trimite. Încearcă WhatsApp sau telefon.","noKey":"Formularul nu este configurat încă (lipsește cheia Web3Forms)."}};</script>
+<script src="/config.js"></script>
+<script src="/calc.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>proto3d | Custom 3D printing and 3D design</title>
+<meta name="description" content="Custom 3D printing, 3D design and modelling. Get an instant price estimate and request a quote by phone, WhatsApp or form.">
+<link rel="canonical" href="https://proto3d.eu/en/">
+<link rel="alternate" hreflang="ro" href="https://proto3d.eu/">
+<link rel="alternate" hreflang="en" href="https://proto3d.eu/en/">
+<link rel="alternate" hreflang="x-default" href="https://proto3d.eu/">
+<meta property="og:title" content="proto3d | Custom 3D printing and 3D design">
+<meta property="og:description" content="Custom 3D printing, 3D design and modelling. Get an instant price estimate and request a quote by phone, WhatsApp or form.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://proto3d.eu/en/">
+<meta name="theme-color" content="#ff6a1a">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="/en/">proto<b>3d</b></a>
+    <nav aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#calculator">Calculator</a>
+      <a href="#contact">Contact</a>
+      <a class="lang" href="/" hreflang="ro" lang="ro" title="Vezi în română">RO</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <h1>From idea to real object.</h1>
+    <p class="lead">Custom 3D printing and 3D design: from a personalised keychain to a functional part or a prototype. Estimate the price in seconds, then we confirm it together.</p>
+    <div class="actions">
+      <a class="btn primary" href="#calculator">Calculate your price</a>
+      <a class="btn" data-tel href="tel:+40700000000">Call now</a>
+      <a class="btn" data-wa data-wa-text="Hi! I'd like a quote for 3D printing." href="https://wa.me/40700000000?text=Hi!%20I'd%20like%20a%20quote%20for%203D%20printing." target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="wrap block">
+  <h2>What we do</h2>
+  <div class="cards">
+    <article class="card"><h3>Custom 3D printing</h3><p>Already have a model? We print it in the right material and colour.</p></article>
+    <article class="card"><h3>3D design and modelling</h3><p>We start from a sketch or a photo and create the 3D model for you, billed by the hour.</p></article>
+    <article class="card"><h3>Prototypes and small parts</h3><p>Spare parts, holders, organisers, mock-ups: fast and in small quantities.</p></article>
+  </div>
+</section>
+
+<section id="gallery" class="wrap block">
+  <h2>Our work</h2>
+  <p class="muted">A few examples of printed objects.</p>
+  <div class="grid">
+    <figure><div class="ph" aria-hidden="true"><span>3D</span></div><figcaption>Custom keychain</figcaption></figure>
+    <figure><div class="ph" aria-hidden="true"><span>3D</span></div><figcaption>Desk holder</figcaption></figure>
+    <figure><div class="ph" aria-hidden="true"><span>3D</span></div><figcaption>Figurine</figcaption></figure>
+    <figure><div class="ph" aria-hidden="true"><span>3D</span></div><figcaption>Functional part</figcaption></figure>
+    <figure><div class="ph" aria-hidden="true"><span>3D</span></div><figcaption>Prototype</figcaption></figure>
+    <figure><div class="ph" aria-hidden="true"><span>3D</span></div><figcaption>Organizer</figcaption></figure>
+  </div>
+</section>
+
+<section id="calculator" class="wrap block">
+  <h2>Price calculator</h2>
+  <p class="muted">This is an estimate. We confirm the final price once we know the details.</p>
+  <div class="calc">
+    <div class="inputs">
+      <div class="row">
+        <label for="hours"><span class="name">3D design hours</span><span class="price">Rate: <span id="rate"></span></span></label>
+        <input id="hours" type="number" min="0" step="0.5" value="0" inputmode="decimal">
+      </div>
+      <h3>Products</h3>
+      <div id="products"></div>
+      <h3>Options</h3>
+      <div id="extras"></div>
+    </div>
+    <aside class="quote" aria-live="polite">
+      <h3>Your estimate</h3>
+      <ul id="quote-lines"></ul>
+      <div class="total"><span>Estimated total</span><strong id="quote-total"></strong></div>
+      <p id="quote-note" class="muted small"></p>
+      <a id="send-wa" class="btn primary" href="https://wa.me/40700000000" target="_blank" rel="noopener">Send on WhatsApp</a>
+      <button id="send-form" class="btn" type="button">Send via the form</button>
+    </aside>
+  </div>
+</section>
+
+<section id="contact" class="wrap block">
+  <h2>Contact</h2>
+  <p class="muted">Tell us what you need. You can send the model (STL) by email or WhatsApp.</p>
+  <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="">
+    <input type="hidden" name="subject" value="Quote request from proto3d.eu">
+    <input type="hidden" name="from_name" value="proto3d.eu">
+    <input type="hidden" name="language" value="en">
+    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <label>Name<input name="name" required autocomplete="name"></label>
+    <label>Phone or email<input name="contact" required autocomplete="email"></label>
+    <label>Message<textarea id="message" name="message" rows="6" required></textarea></label>
+    <button class="btn primary" type="submit">Send request</button>
+    <p id="form-status" role="status" class="small"></p>
+  </form>
+  <p class="direct">Or contact us directly:
+    <a data-tel href="tel:+40700000000">+40700000000</a> ·
+    <a data-wa data-wa-text="Hi! I'd like a quote for 3D printing." href="https://wa.me/40700000000" target="_blank" rel="noopener">WhatsApp</a> ·
+    <a data-mail href="mailto:hello@proto3d.eu">hello@proto3d.eu</a>
+  </p>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 proto3d.eu · All rights reserved.</div>
+</footer>
+
+<script>window.I18N={"calc":{"design":"3D design","waIntro":"Hi! I'd like a quote:","estTotal":"Estimated total","empty":"Pick design hours or products to see your estimate.","minNote":"Minimum order is {min}."},"form":{"sending":"Sending...","ok":"Thank you! We received your request and will reply soon.","fail":"Could not send. Please try WhatsApp or phone.","noKey":"The form is not configured yet (Web3Forms key missing)."}};</script>
+<script src="/config.js"></script>
+<script src="/calc.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
