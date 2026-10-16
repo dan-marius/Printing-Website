@@ -115,18 +115,18 @@
   });
   update();
 
-  // ---- contact form (Web3Forms) ----
+  // ---- contact form (FormSubmit, delivers to C.email) ----
   var form = document.getElementById("contact-form");
   var status = document.getElementById("form-status");
-  form.querySelector('[name="access_key"]').value = C.web3formsKey;
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    if (/YOUR_WEB3FORMS/.test(C.web3formsKey)) { status.textContent = T.form.noKey; return; }
     status.textContent = T.form.sending;
-    fetch("https://api.web3forms.com/submit", { method: "POST", body: new FormData(form) })
+    fetch("https://formsubmit.co/ajax/" + C.email, {
+      method: "POST", headers: { Accept: "application/json" }, body: new FormData(form)
+    })
       .then(function (r) { return r.json(); })
       .then(function (j) {
-        if (j.success) { status.textContent = T.form.ok; form.reset(); }
+        if (String(j.success) === "true") { status.textContent = T.form.ok; form.reset(); }
         else status.textContent = T.form.fail;
       })
       .catch(function () { status.textContent = T.form.fail; });

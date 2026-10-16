@@ -9,11 +9,8 @@ window.SITE_CONFIG = {
   // Contact
   phone: "+40751890165",        // used for the "Call" buttons (with country code)
   whatsapp: "40751890165",      // digits only, country code first, no + sign
-  email: "dan_marius_8@yahoo.com",
+  email: "dan_marius_8@yahoo.com", // also where contact form messages are delivered (via formsubmit.co)
   city: { ro: "România", en: "Romania" },
-
-  // Web3Forms access key (free at web3forms.com). It is safe to keep in the page.
-  web3formsKey: "YOUR_WEB3FORMS_ACCESS_KEY",
 
   // Pricing
   currency: "RON",

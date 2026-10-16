@@ -50,8 +50,7 @@ const TEXTS = {
       minNote: "Comanda minimă este {min}.",
       form: {
         sending: "Se trimite...", ok: "Mulțumim! Am primit cererea și revenim cât mai curând.",
-        fail: "Nu s-a putut trimite. Încearcă WhatsApp sau telefon.",
-        noKey: "Formularul nu este configurat încă (lipsește cheia Web3Forms)."
+        fail: "Nu s-a putut trimite. Încearcă WhatsApp sau telefon."
       }
     }
   },
@@ -94,8 +93,7 @@ const TEXTS = {
       minNote: "Minimum order is {min}.",
       form: {
         sending: "Sending...", ok: "Thank you! We received your request and will reply soon.",
-        fail: "Could not send. Please try WhatsApp or phone.",
-        noKey: "The form is not configured yet (Web3Forms key missing)."
+        fail: "Could not send. Please try WhatsApp or phone."
       }
     }
   }
@@ -207,12 +205,12 @@ function page(lang) {
 <section id="contact" class="wrap block">
   <h2>${esc(t.contact.h2)}</h2>
   <p class="muted">${esc(t.contact.p)}</p>
-  <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-    <input type="hidden" name="access_key" value="">
-    <input type="hidden" name="subject" value="${esc(t.mail.subject)}">
-    <input type="hidden" name="from_name" value="proto3d.eu">
+  <form id="contact-form" action="https://formsubmit.co/${esc(C.email)}" method="POST">
+    <input type="hidden" name="_subject" value="${esc(t.mail.subject)}">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_next" value="${esc(urlOf(lang))}#contact">
     <input type="hidden" name="language" value="${lang}">
-    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
     <label>${esc(t.contact.name)}<input name="name" required autocomplete="name"></label>
     <label>${esc(t.contact.reach)}<input name="contact" required autocomplete="email"></label>
     <label>${esc(t.contact.message)}<textarea id="message" name="message" rows="6" required></textarea></label>
