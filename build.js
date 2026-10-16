@@ -29,7 +29,7 @@ const TEXTS = {
         ["Prototipuri și piese mici", "Piese de schimb, suporturi, organizatoare, machete: rapid și la cantități mici."]
       ]
     },
-    gallery: { h2: "Lucrări", p: "Câteva exemple de obiecte printate.", items: ["Breloc personalizat", "Suport birou", "Figurină", "Piesă funcțională", "Prototip", "Organizator"] },
+    gallery: { h2: "Lucrări", p: "Câteva exemple de obiecte printate.", items: ["Mască ventilată pentru țevi", "Profil de mascare la cadă", "Organizator consolă auto", "Clemă pentru furtun de aspirație", "Roată de manevră", "Suporturi pentru scule pneumatice"] },
     calc: {
       h2: "Calculator de preț", p: "Un preț estimativ. Prețul final îl confirmăm după ce ne spui detaliile.",
       hours: "Ore de design 3D", hoursHint: "Tarif:", products: "Produse", extras: "Opțiuni",
@@ -73,7 +73,7 @@ const TEXTS = {
         ["Prototypes and small parts", "Spare parts, holders, organisers, mock-ups: fast and in small quantities."]
       ]
     },
-    gallery: { h2: "Our work", p: "A few examples of printed objects.", items: ["Custom keychain", "Desk holder", "Figurine", "Functional part", "Prototype", "Organizer"] },
+    gallery: { h2: "Our work", p: "A few examples of printed objects.", items: ["Ventilated pipe cover", "Bathtub trim cover", "Car console organizer", "Dust hose clamp", "Hand wheel", "Air tool wall holders"] },
     calc: {
       h2: "Price calculator", p: "This is an estimate. We confirm the final price once we know the details.",
       hours: "3D design hours", hoursHint: "Rate:", products: "Products", extras: "Options",
