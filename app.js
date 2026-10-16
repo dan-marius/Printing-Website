@@ -26,6 +26,7 @@
   var elWa = document.getElementById("send-wa");
   var elToForm = document.getElementById("send-form");
   var elMsg = document.getElementById("message");
+  var elVisitNote = document.getElementById("visit-note");
   if (!elHours) return;
 
   C.products.forEach(function (p) {
@@ -82,7 +83,9 @@
   }
 
   function update() {
-    var res = Calc.calculate(C, readInput());
+    var input = readInput();
+    if (elVisitNote) elVisitNote.hidden = !input.extras.visit;
+    var res = Calc.calculate(C, input);
     elLines.innerHTML = "";
     if (!res.lines.length) {
       elLines.innerHTML = '<li class="muted"></li>';

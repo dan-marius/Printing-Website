@@ -344,7 +344,7 @@ function page(lang) {
         </div>
         <h3>${esc(t.calc.extras)}</h3>
         <div id="extras"></div>
-        <p class="note">${esc(t.calc.visitNote)}</p>
+        <p class="note" id="visit-note" hidden>${esc(t.calc.visitNote)}</p>
         <p class="help">${esc(t.calc.help)}</p>
       </div>
       <aside class="quote" aria-live="polite">
