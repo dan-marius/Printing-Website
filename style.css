@@ -60,7 +60,7 @@ nav a.lang{text-decoration:none;font-size:.85rem;font-weight:700;padding:6px 10p
 .points .ico{color:var(--accent);width:22px;height:22px;padding:3px;border-radius:50%;background:rgba(255,106,26,.15);stroke-width:2.6}
 
 .hero-art{position:relative;min-height:420px}
-.hero-art img{position:absolute;display:block;object-fit:cover;border-radius:var(--radius);box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.hero-art img{position:absolute;display:block;height:auto;object-fit:cover;border-radius:var(--radius);box-shadow:0 30px 60px rgba(0,0,0,.45)}
 .art-main{right:0;top:0;width:88%;aspect-ratio:679/526;transform:rotate(2deg);border:1px solid var(--dark-line)}
 .art-side{left:0;bottom:0;width:46%;aspect-ratio:449/521;transform:rotate(-4deg);border:6px solid #fff}
 .art-badge{position:absolute;right:6%;bottom:6%;display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--ink);font-weight:700;font-size:.92rem;padding:10px 14px;border-radius:12px;box-shadow:0 16px 36px rgba(0,0,0,.35)}
@@ -105,6 +105,15 @@ nav a.lang{text-decoration:none;font-size:.85rem;font-weight:700;padding:6px 10p
 .grid figcaption{position:absolute;inset:auto 0 0 0;padding:44px 16px 14px;color:#fff;background:linear-gradient(transparent,rgba(10,12,14,.82));display:grid;gap:2px}
 .grid figcaption strong{font-size:1rem;line-height:1.25}
 .grid figcaption span{font-size:.85rem;color:#d5dade}
+
+/* faq */
+.faq{display:grid;gap:12px;max-width:860px}
+.faq details{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:0 20px}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;font-weight:700;font-size:1.03rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--soft);color:var(--accent);font-size:1.2rem;font-weight:700;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin:0 0 18px;color:var(--muted)}
 
 /* calculator */
 .calc{display:grid;grid-template-columns:1.25fr 1fr;gap:22px;align-items:start}

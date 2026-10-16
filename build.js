@@ -12,8 +12,8 @@ const C = new Function("window", fs.readFileSync(path.join(__dirname, "config.js
 
 const TEXTS = {
   ro: {
-    title: "proto3d Baia Mare | Piese printate 3D la comandă",
-    desc: "Piese printate 3D făcute pe măsură în Baia Mare: măști pentru țevi, piese de schimb, organizatoare auto, suporturi de atelier. Măsurători la domiciliu, preț estimativ pe loc.",
+    title: "Printare 3D Baia Mare – piese la comandă și piese de schimb | proto3d",
+    desc: "Printare și imprimare 3D în Baia Mare: piese de schimb, măști pentru țevi, organizatoare auto, suporturi de atelier. Măsurăm la domiciliu. Calculează prețul online.",
     nav: { services: "Servicii", how: "Cum lucrăm", gallery: "Lucrări", calc: "Preț", contact: "Contact", cta: "Cere ofertă" },
     hero: {
       eyebrow: "Printare și proiectare 3D · Baia Mare",
@@ -78,6 +78,18 @@ const TEXTS = {
       name: "Nume", reach: "Telefon sau e-mail", message: "Ce piesă îți trebuie?", send: "Trimite cererea",
       direct: "Contact direct", area: "Zona", phone: "Telefon", email: "E-mail"
     },
+    faq: {
+      h2: "Întrebări frecvente",
+      items: (P) => [
+        ["Cât costă o piesă printată 3D?", `Depinde de mărime și de cât de mult trebuie proiectată. Orientativ: piesele mici pornesc de la ${P.small}, cele medii de la ${P.medium}, iar cele mari de la ${P.large}. Proiectarea 3D costă ${P.rate} pe oră. Calculatorul de pe pagină îți dă o estimare pe loc.`],
+        ["Cum comand o piesă?", "Trimite o poză cu piesa sau cu locul unde trebuie montată, plus câteva măsuri, pe WhatsApp sau prin formular. Îți spunem prețul și termenul înainte să începem."],
+        ["Puteți reface o piesă ruptă care nu se mai găsește?", "Da. O refacem după piesa originală, chiar dacă e ruptă, sau după măsuri. Uneori o facem chiar mai rezistentă decât originalul."],
+        ["Veniți să măsurați la domiciliu?", `Da, în Baia Mare. Deplasarea costă ${P.visit} (măsurători, livrare sau montaj) și se plătește și dacă la fața locului constatăm că nu putem ajuta sau nu ajungem la o înțelegere.`],
+        ["Ce materiale folosiți?", "PLA pentru piese de interior, PETG pentru locuri cu umezeală sau căldură moderată (baie, bucătărie, lângă calorifer) și ASA pentru exterior și mașină, unde piesa stă la soare și la temperaturi mari."],
+        ["Livrați și în afara orașului Baia Mare?", `Da, prin curier în toată țara (${P.courier}). Piesele simple le putem face și doar după poze și măsuri, fără deplasare.`],
+        ["Am deja fișierul 3D (STL). Îl puteți printa?", "Da. Trimite-ne fișierul pe e-mail sau WhatsApp și îți spunem prețul pentru printare, fără costuri de proiectare."]
+      ]
+    },
     footer: "Piese printate 3D la comandă.",
     switchTo: { label: "EN", title: "View in English", href: "/en/", lang: "en" },
     mail: { subject: "Cerere de ofertă de pe proto3d.eu" },
@@ -92,8 +104,8 @@ const TEXTS = {
     }
   },
   en: {
-    title: "proto3d Baia Mare | Custom 3D printed parts",
-    desc: "Custom 3D printed parts made to measure in Baia Mare, Romania: pipe covers, spare parts, car organisers, workshop holders. On-site measuring and an instant price estimate.",
+    title: "3D Printing in Baia Mare – custom and replacement parts | proto3d",
+    desc: "3D printing in Baia Mare, Romania: replacement parts, pipe covers, car organisers, workshop holders. On-site measuring and an instant online price estimate.",
     nav: { services: "Services", how: "How it works", gallery: "Work", calc: "Price", contact: "Contact", cta: "Get a quote" },
     hero: {
       eyebrow: "3D printing and design · Baia Mare",
@@ -158,6 +170,18 @@ const TEXTS = {
       name: "Name", reach: "Phone or email", message: "What part do you need?", send: "Send request",
       direct: "Direct contact", area: "Area", phone: "Phone", email: "Email"
     },
+    faq: {
+      h2: "Frequently asked questions",
+      items: (P) => [
+        ["How much does a 3D printed part cost?", `It depends on the size and how much design work it needs. As a guide: small parts start at ${P.small}, medium parts at ${P.medium} and large parts at ${P.large}. 3D design costs ${P.rate} per hour. The calculator on this page gives you an instant estimate.`],
+        ["How do I order a part?", "Send a photo of the part or of the place it has to fit, plus a few measurements, on WhatsApp or through the form. You get the price and timing before we start."],
+        ["Can you remake a broken part you can no longer buy?", "Yes. We remake it from the original part, even if it is broken, or from measurements. Sometimes we can make it stronger than the original."],
+        ["Do you come to measure at my home?", `Yes, in Baia Mare. A visit costs ${P.visit} (measuring, delivery or fitting) and is charged even if, once there, we find we can't help or we don't reach an agreement.`],
+        ["Which materials do you use?", "PLA for indoor parts, PETG for places with moisture or moderate heat (bathroom, kitchen, next to a radiator) and ASA for outdoors and cars, where the part is exposed to sun and high temperatures."],
+        ["Do you deliver outside Baia Mare?", `Yes, by courier anywhere in Romania (${P.courier}). Simple parts can be made from photos and measurements alone, without a visit.`],
+        ["I already have a 3D file (STL). Can you print it?", "Yes. Send the file by email or WhatsApp and we'll quote the printing, with no design cost."]
+      ]
+    },
     footer: "Custom 3D printed parts.",
     switchTo: { label: "RO", title: "Vezi în română", href: "/", lang: "ro" },
     mail: { subject: "Quote request from proto3d.eu" },
@@ -192,6 +216,25 @@ const icon = (name) => `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
 
 const hasImg = (n) => fs.existsSync(path.join(__dirname, "assets", `gallery-${n}.jpg`));
 
+// Reads width/height from a JPEG header, so <img> tags can reserve their space.
+function jpegSize(file) {
+  const b = fs.readFileSync(file);
+  let i = 2;
+  while (i < b.length) {
+    if (b[i] !== 0xff) { i++; continue; }
+    const m = b[i + 1];
+    if (m >= 0xc0 && m <= 0xcf && m !== 0xc4 && m !== 0xc8 && m !== 0xcc) {
+      return { h: b.readUInt16BE(i + 5), w: b.readUInt16BE(i + 7) };
+    }
+    i += 2 + b.readUInt16BE(i + 2);
+  }
+  return null;
+}
+const imgDims = (n) => {
+  const d = jpegSize(path.join(__dirname, "assets", `gallery-${n}.jpg`));
+  return d ? ` width="${d.w}" height="${d.h}"` : "";
+};
+
 // Photos 1 and 2 are portrait, so they take two rows in the gallery grid.
 const TALL = [1, 2];
 
@@ -199,7 +242,7 @@ function galleryItem(i, item) {
   const n = i + 1;
   const [title, sub] = item;
   const inner = hasImg(n)
-    ? `<img src="/assets/gallery-${n}.jpg" alt="${esc(title)}" loading="lazy">`
+    ? `<img src="/assets/gallery-${n}.jpg" alt="${esc(title)}: ${esc(sub.charAt(0).toLowerCase() + sub.slice(1))}"${imgDims(n)} loading="lazy" decoding="async">`
     : `<div class="ph" aria-hidden="true"><span>3D</span></div>`;
   return `<figure${TALL.includes(n) ? ' class="tall"' : ""}>${inner}<figcaption><strong>${esc(title)}</strong><span>${esc(sub)}</span></figcaption></figure>`;
 }
@@ -212,13 +255,25 @@ function page(lang) {
   const waText = t.hero.waText;
   const waHref = `https://wa.me/${esc(C.whatsapp)}?text=${encodeURIComponent(waText)}`;
   const waAttrs = `data-wa data-wa-text="${esc(waText)}" href="${waHref}" target="_blank" rel="noopener"`;
-  const ld = {
-    "@context": "https://schema.org", "@type": "LocalBusiness",
-    name: "proto3d", url: urlOf(lang), description: t.desc,
-    telephone: C.phone, email: C.email, image: C.domain + "/assets/gallery-1.jpg",
+  const ron = (v) => `${v} ${C.currency}`;
+  const priceOf = (id, list) => { const x = list.find((y) => y.id === id); return x.price ?? x.value; };
+  const faq = t.faq.items({
+    small: ron(priceOf("small", C.products)), medium: ron(priceOf("medium", C.products)), large: ron(priceOf("large", C.products)),
+    rate: ron(C.designRatePerHour), visit: ron(priceOf("visit", C.extras)), courier: ron(priceOf("courier", C.extras))
+  });
+  const ld = [{
+    "@context": "https://schema.org", "@type": "LocalBusiness", "@id": C.domain + "/#business",
+    name: "proto3d", url: urlOf(lang), description: t.desc, inLanguage: lang,
+    telephone: C.phone, email: C.email, logo: C.domain + "/assets/favicon.svg",
+    image: [1, 2, 3, 4, 5, 6].filter(hasImg).map((n) => `${C.domain}/assets/gallery-${n}.jpg`),
     address: { "@type": "PostalAddress", addressLocality: "Baia Mare", addressRegion: "Maramureș", addressCountry: "RO" },
-    areaServed: "Baia Mare"
-  };
+    areaServed: [{ "@type": "City", name: "Baia Mare" }, { "@type": "AdministrativeArea", name: "Maramureș" }],
+    priceRange: `${ron(Math.min(...C.products.map((p) => p.price)))}+`,
+    knowsAbout: ["3D printing", "3D modelling", "PLA", "PETG", "ASA"]
+  }, {
+    "@context": "https://schema.org", "@type": "FAQPage", inLanguage: lang,
+    mainEntity: faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } }))
+  }];
   return `<!doctype html>
 <html lang="${lang}">
 <head>
@@ -235,6 +290,10 @@ function page(lang) {
 <meta property="og:type" content="website">
 <meta property="og:url" content="${urlOf(lang)}">
 <meta property="og:image" content="${C.domain}/assets/gallery-6.jpg">
+<meta property="og:image:alt" content="${esc(t.gallery.items[5][0])}">
+<meta property="og:site_name" content="proto3d">
+<meta property="og:locale" content="${lang === "ro" ? "ro_RO" : "en_GB"}">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#14171b">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/style.css">
@@ -275,8 +334,8 @@ function page(lang) {
       </ul>
     </div>
     <div class="hero-art" aria-hidden="true">
-      ${hasImg(6) ? `<img class="art-main" src="/assets/gallery-6.jpg" alt="">` : ""}
-      ${hasImg(3) ? `<img class="art-side" src="/assets/gallery-3.jpg" alt="">` : ""}
+      ${hasImg(6) ? `<img class="art-main" src="/assets/gallery-6.jpg" alt=""${imgDims(6)} fetchpriority="high">` : ""}
+      ${hasImg(3) ? `<img class="art-side" src="/assets/gallery-3.jpg" alt=""${imgDims(3)}>` : ""}
       <span class="art-badge">${icon("pin")}${esc(t.hero.badge)}</span>
     </div>
   </div>
@@ -359,7 +418,16 @@ function page(lang) {
   </div>
 </section>
 
-<section id="contact" class="block alt">
+<section id="faq" class="block alt">
+  <div class="wrap">
+    <div class="head"><h2>${esc(t.faq.h2)}</h2></div>
+    <div class="faq">
+      ${faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("\n      ")}
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="block">
   <div class="wrap">
     <div class="head">
       <h2>${esc(t.contact.h2)}</h2>
@@ -416,6 +484,7 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${["ro", "en"].map((l) => `  <url>
     <loc>${urlOf(l)}</loc>
+    <lastmod>${new Date().toISOString().slice(0, 10)}</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="${urlOf("ro")}"/>
     <xhtml:link rel="alternate" hreflang="en" href="${urlOf("en")}"/>
   </url>`).join("\n")}
