@@ -39,12 +39,19 @@
     elProducts.appendChild(row);
   });
 
+  function money(v) { return v === 0 ? T.calc.free : fmt.format(v); }
+
+  var seenGroup = {};
   C.extras.forEach(function (e) {
     var label = document.createElement("label");
     label.className = "check";
-    label.innerHTML = '<input type="checkbox" data-extra="' + e.id + '"><span></span>';
-    label.querySelector("span").textContent = e.name[lang] +
-      (e.type === "flat" ? " (+" + fmt.format(e.value) + ")" : "");
+    var type = e.group ? "radio" : "checkbox";
+    var name = e.group ? ' name="x-' + e.group + '"' : "";
+    var checked = e.group && !seenGroup[e.group] ? " checked" : "";
+    if (e.group) seenGroup[e.group] = true;
+    label.innerHTML = '<input type="' + type + '"' + name + checked + ' data-extra="' + e.id + '"><span class="name"></span><span class="price"></span>';
+    label.querySelector(".name").textContent = e.name[lang];
+    if (e.type === "flat") label.querySelector(".price").textContent = e.value === 0 ? T.calc.free : "+" + fmt.format(e.value);
     elExtras.appendChild(label);
   });
 
@@ -90,7 +97,7 @@
     res.lines.forEach(function (l) {
       var li = document.createElement("li");
       var a = document.createElement("span"); a.textContent = lineText(l);
-      var b = document.createElement("span"); b.textContent = fmt.format(l.amount);
+      var b = document.createElement("span"); b.textContent = money(l.amount);
       li.appendChild(a); li.appendChild(b);
       elLines.appendChild(li);
     });
