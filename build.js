@@ -37,7 +37,7 @@ const TEXTS = {
     how: {
       h2: "Cum lucrăm",
       steps: [
-        ["Ne spui ce ai nevoie", "Trimite o poză și câteva măsuri pe WhatsApp sau cheamă-ne să măsurăm la fața locului."],
+        ["Ne spui ce ai nevoie", "Trimite o poză și câteva măsuri pe WhatsApp sau cheamă-ne să măsurăm la fața locului (50 RON în Baia Mare)."],
         ["Primești oferta", "Îți spunem prețul și termenul înainte să începem. Fără surprize."],
         ["Proiectăm și printăm", "Desenăm piesa, o printăm și o verificăm. La piese mari printăm întâi o probă."],
         ["Ridici, livrăm sau montăm", "Ridici piesa din Baia Mare, o primești prin curier sau venim să o montăm."]
@@ -59,7 +59,19 @@ const TEXTS = {
       hours: "Ore de proiectare 3D", hoursHint: "Dacă piesa trebuie desenată. Tarif:", products: "Piese", extras: "Livrare și opțiuni",
       summary: "Estimarea ta", total: "Total estimat",
       sendWa: "Trimite pe WhatsApp", sendForm: "Trimite prin formular",
-      help: "Nu știi în ce categorie intră piesa? Trimite o poză pe WhatsApp și îți spunem noi."
+      help: "Nu știi în ce categorie intră piesa? Trimite o poză pe WhatsApp și îți spunem noi.",
+      visitNote: "Deplasarea în Baia Mare costă 50 RON și se plătește și dacă la fața locului constatăm că nu putem ajuta sau nu ajungem la o înțelegere. Dacă vrei doar să venim să măsurăm, alege deplasarea fără alte piese."
+    },
+    materials: {
+      h2: "Materialul potrivit locului",
+      p: "Alegem materialul după locul unde va sta piesa: în casă, lângă o sursă de căldură, în mașină sau afară.",
+      tempLabel: "Rezistă până la aprox.",
+      items: [
+        ["PLA", "55 °C", "Pentru interior", "Rigid, cu finisaj curat și multe culori. Bun pentru suporturi, organizatoare și capace care stau în casă, departe de căldură și soare."],
+        ["PETG", "75 °C", "Baie, bucătărie, atelier", "Mai rezistent la umezeală, lovituri și căldură moderată. Potrivit pentru măști de țevi, piese lângă calorifer sau cadă și piese funcționale."],
+        ["ASA", "90 °C", "Exterior și mașină", "Rezistă la soare (UV), ploaie, îngheț și la căldura dintr-o mașină parcată vara. Pentru piese de exterior și interior auto."]
+      ],
+      note: "Nu știi ce material îți trebuie? Spune-ne unde va sta piesa și alegem noi."
     },
     contact: {
       h2: "Hai să vorbim despre piesa ta", p: "Scrie-ne ce ai nevoie. Poza și măsurile ne ajută să răspundem mai repede.",
@@ -105,7 +117,7 @@ const TEXTS = {
     how: {
       h2: "How it works",
       steps: [
-        ["Tell us what you need", "Send a photo and a few measurements on WhatsApp, or ask us to come and measure."],
+        ["Tell us what you need", "Send a photo and a few measurements on WhatsApp, or ask us to come and measure (50 RON in Baia Mare)."],
         ["Get a quote", "You know the price and the timing before we start. No surprises."],
         ["We design and print", "We model the part, print it and check it. For large parts we print a test piece first."],
         ["Pick up, delivery or fitting", "Collect it in Baia Mare, get it by courier, or we come and fit it."]
@@ -127,7 +139,19 @@ const TEXTS = {
       hours: "3D design hours", hoursHint: "If the part needs modelling. Rate:", products: "Parts", extras: "Delivery and options",
       summary: "Your estimate", total: "Estimated total",
       sendWa: "Send on WhatsApp", sendForm: "Send via the form",
-      help: "Not sure which size your part is? Send a photo on WhatsApp and we'll tell you."
+      help: "Not sure which size your part is? Send a photo on WhatsApp and we'll tell you.",
+      visitNote: "A visit in Baia Mare costs 50 RON and is charged even if, once there, we find we can't help or we don't reach an agreement. If you only want us to come and measure, choose the visit without any parts."
+    },
+    materials: {
+      h2: "The right material for the place",
+      p: "We choose the material by where the part will live: indoors, near a heat source, in a car or outside.",
+      tempLabel: "Withstands up to approx.",
+      items: [
+        ["PLA", "55 °C", "Indoors", "Rigid, with a clean finish and many colours. Good for holders, organisers and covers that stay indoors, away from heat and sun."],
+        ["PETG", "75 °C", "Bathroom, kitchen, workshop", "More resistant to moisture, impacts and moderate heat. Suits pipe covers, parts next to a radiator or bathtub, and functional parts."],
+        ["ASA", "90 °C", "Outdoors and cars", "Handles sun (UV), rain, frost and the heat inside a car parked in summer. For outdoor parts and car interiors."]
+      ],
+      note: "Not sure which material you need? Tell us where the part will go and we'll pick it."
     },
     contact: {
       h2: "Let's talk about your part", p: "Tell us what you need. A photo and measurements help us reply faster.",
@@ -270,7 +294,20 @@ function page(lang) {
   </div>
 </section>
 
-<section id="how" class="block alt">
+<section id="materials" class="block alt">
+  <div class="wrap">
+    <div class="head">
+      <h2>${esc(t.materials.h2)}</h2>
+      <p class="muted">${esc(t.materials.p)}</p>
+    </div>
+    <div class="mats">
+      ${t.materials.items.map((m) => `<article class="mat"><div class="mat-top"><span class="mat-name">${esc(m[0])}</span><span class="mat-temp" title="${esc(t.materials.tempLabel)} ${esc(m[1])}">≤ ${esc(m[1])}</span></div><h3>${esc(m[2])}</h3><p>${esc(m[3])}</p></article>`).join("\n      ")}
+    </div>
+    <p class="help">${esc(t.materials.note)}</p>
+  </div>
+</section>
+
+<section id="how" class="block">
   <div class="wrap">
     <div class="head"><h2>${esc(t.how.h2)}</h2></div>
     <ol class="steps">
@@ -279,7 +316,7 @@ function page(lang) {
   </div>
 </section>
 
-<section id="gallery" class="block">
+<section id="gallery" class="block alt">
   <div class="wrap">
     <div class="head">
       <h2>${esc(t.gallery.h2)}</h2>
@@ -291,7 +328,7 @@ function page(lang) {
   </div>
 </section>
 
-<section id="calculator" class="block alt">
+<section id="calculator" class="block">
   <div class="wrap">
     <div class="head">
       <h2>${esc(t.calc.h2)}</h2>
@@ -307,6 +344,7 @@ function page(lang) {
         </div>
         <h3>${esc(t.calc.extras)}</h3>
         <div id="extras"></div>
+        <p class="note">${esc(t.calc.visitNote)}</p>
         <p class="help">${esc(t.calc.help)}</p>
       </div>
       <aside class="quote" aria-live="polite">
@@ -321,7 +359,7 @@ function page(lang) {
   </div>
 </section>
 
-<section id="contact" class="block">
+<section id="contact" class="block alt">
   <div class="wrap">
     <div class="head">
       <h2>${esc(t.contact.h2)}</h2>

@@ -23,9 +23,10 @@ window.SITE_CONFIG = {
   ],
 
   // Extras with the same `group` are one-choice options (radio buttons); the first one is preselected.
+  // `standalone: true` means the extra is charged even when no part is ordered (the visit fee).
   extras: [
     { id: "pickup",  group: "delivery", type: "flat", value: 0,  name: { ro: "Ridicare personală din Baia Mare", en: "Pick up in Baia Mare" } },
-    { id: "visit",   group: "delivery", type: "flat", value: 50, name: { ro: "Deplasare în Baia Mare (măsurători, livrare sau montaj)", en: "Visit in Baia Mare (measuring, delivery or fitting)" } },
+    { id: "visit",   group: "delivery", type: "flat", value: 50, standalone: true, name: { ro: "Deplasare în Baia Mare (măsurători, livrare sau montaj)", en: "Visit in Baia Mare (measuring, delivery or fitting)" } },
     { id: "courier", group: "delivery", type: "flat", value: 25, name: { ro: "Livrare prin curier în toată țara", en: "Courier delivery across Romania" } },
     { id: "rush",    type: "percent", value: 30, name: { ro: "Urgent (+30%)", en: "Rush order (+30%)" } }
   ]

@@ -24,15 +24,14 @@
     });
 
     var total = subtotal;
-    if (subtotal > 0) {
-      cfg.extras.forEach(function (e) {
-        if (input.extras && input.extras[e.id]) {
-          var amt = e.type === "percent" ? (subtotal * e.value) / 100 : e.value;
-          lines.push({ type: "extra", id: e.id, amount: amt });
-          total += amt;
-        }
-      });
-    }
+    // Extras apply once something is ordered; `standalone` ones (e.g. a visit) apply on their own too.
+    cfg.extras.forEach(function (e) {
+      if ((subtotal > 0 || e.standalone) && input.extras && input.extras[e.id]) {
+        var amt = e.type === "percent" ? (subtotal * e.value) / 100 : e.value;
+        lines.push({ type: "extra", id: e.id, amount: amt });
+        total += amt;
+      }
+    });
 
     var minApplied = false;
     if (subtotal > 0 && cfg.minOrder && total < cfg.minOrder) {
