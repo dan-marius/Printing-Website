@@ -210,6 +210,8 @@ const ICONS = {
   phone: '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>',
   mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
   pin: '<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
+  link: '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 11v6"/>',
+  code: '<path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/>',
   wa: '<path d="M20 11.5A8.5 8.5 0 0 1 7.4 19L3 20.5l1.5-4.3A8.5 8.5 0 1 1 20 11.5z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8a5 5 0 0 1-2.8-2.8l.8-1-1-2z"/>'
 };
 const icon = (name) => `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">${ICONS[name]}</svg>`;
@@ -461,7 +463,7 @@ function page(lang) {
 <footer>
   <div class="wrap foot">
     <a class="brand" href="${home}"><img src="/assets/favicon.svg" alt="" width="26" height="26"><span>proto<b>3d</b></span></a>
-    <span>© ${new Date().getFullYear()} proto3d.eu · ${esc(t.footer)} · ${esc(C.city[lang])}</span>
+    <span>© ${new Date().getFullYear()} proto3d.eu · ${esc(t.footer)} · ${esc(C.city[lang])} · <a href="${lang === "ro" ? "/portfolio/" : "/en/portfolio/"}">${lang === "ro" ? "Portofoliu de inginerie" : "Engineering portfolio"}</a></span>
   </div>
 </footer>
 
@@ -480,16 +482,21 @@ fs.mkdirSync(path.join(__dirname, "en"), { recursive: true });
 fs.writeFileSync(path.join(__dirname, "index.html"), page("ro"));
 fs.writeFileSync(path.join(__dirname, "en", "index.html"), page("en"));
 
+// Engineering portfolio pages (see portfolio.js); returns ro/en page pairs.
+const portfolioPairs = require("./portfolio.js")({ C, esc, icon });
+
+const pairs = [{ ro: "/", en: "/en/" }].concat(portfolioPairs);
+const today = new Date().toISOString().slice(0, 10);
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${["ro", "en"].map((l) => `  <url>
-    <loc>${urlOf(l)}</loc>
-    <lastmod>${new Date().toISOString().slice(0, 10)}</lastmod>
-    <xhtml:link rel="alternate" hreflang="ro" href="${urlOf("ro")}"/>
-    <xhtml:link rel="alternate" hreflang="en" href="${urlOf("en")}"/>
-  </url>`).join("\n")}
+${pairs.flatMap((p) => ["ro", "en"].map((l) => `  <url>
+    <loc>${C.domain + p[l]}</loc>
+    <lastmod>${today}</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="${C.domain + p.ro}"/>
+    <xhtml:link rel="alternate" hreflang="en" href="${C.domain + p.en}"/>
+  </url>`)).join("\n")}
 </urlset>
 `;
 fs.writeFileSync(path.join(__dirname, "sitemap.xml"), sitemap);
 fs.writeFileSync(path.join(__dirname, "robots.txt"), `User-agent: *\nAllow: /\nSitemap: ${C.domain}/sitemap.xml\n`);
-console.log("Built: index.html, en/index.html, sitemap.xml, robots.txt");
+console.log(`Built: index.html, en/index.html, ${portfolioPairs.length * 2} portfolio pages, sitemap.xml, robots.txt`);
