@@ -269,7 +269,7 @@ const CASES = [
     tags: ["FreeCAD", "Reverse engineering", "PLA → PETG", "Worm gear"],
     ro: {
       title: "Roată cu melc pentru pompa de ulei a unei drujbe: inginerie inversă",
-      summary: "Piesă de schimb pentru un client: am reconstruit roata dințată cu melc după piesa originală uzată, am testat un prototip din PLA, am corectat modelul după probă și am printat piesa finală din PETG.",
+      summary: "Piesă de schimb pentru un client: am reconstruit roata dințată cu melc după dimensiunile piesei uzate, am simulat angrenarea, am testat un prototip din PLA, am corectat modelul și am printat piesa finală din PETG. Pompa funcționează din nou.",
       meta: { period: "Octombrie 2026", role: "Proiectare și fabricație, pentru un client", tools: "FreeCAD (Part Design), printare FDM", materials: "PLA (prototip), PETG (final)" },
       context: [
         "Pompa de ulei a drujbei, care unge lanțul, este antrenată printr-un angrenaj: roata dințată primește mișcarea, iar melcul de pe butucul ei antrenează pinionul pompei.",
@@ -277,26 +277,28 @@ const CASES = [
       ],
       inputs: [
         "Fotografii ale piesei originale uzate, trimise de client: roata dințată cu melcul pe butuc.",
+        "Dimensiunile aproximative și numărul de dinți, măsurate de client pe piesa de plastic originală și pe piesa care o antrenează.",
         "Pinionul pompei cu care angrenează melcul.",
         "Cerința: o piesă de schimb care să se monteze în locul originalei și să reziste la frecare și la căldura din funcționare."
       ],
       path: [
-        ["Analiza piesei originale", "Am identificat geometria din piesele originale: numărul de dinți ai roții, diametrele, pasul și profilul melcului, butucul și alezajul."],
+        ["Analiza piesei originale", "Am pornit de la dimensiunile aproximative și numărul de dinți trimise de client și de la fotografii, și am stabilit geometria: diametrele, pasul și profilul melcului, butucul și alezajul."],
         ["Modelarea în FreeCAD", "Am modelat roata dințată cu melcul integrat și, separat, pinionul pompei, ca să pot verifica angrenarea în ansamblu."],
+        ["Simularea angrenării", "Am simulat ansamblul în FreeCAD: roata primește mișcarea, iar melcul de pe butucul ei antrenează pinionul pompei. Am arătat simularea clientului înainte de printare.", "freecad-assembly.jpg"],
         ["Prototip din PLA", "Am printat un prim model din PLA alb, rapid și ieftin, și l-am trimis clientului pentru probă."],
         ["Corecții după probă", "Clientul a confirmat modificările: partea roții mai groasă și sensul de lucru inversat."],
-        ["Piesa finală din PETG", "Am printat modelul corectat din PETG negru, mai rezistent la frecare și la căldură decât PLA, și am verificat perpendicularitatea cu echerul."]
+        ["Piesa finală din PETG", "Am printat modelul corectat din PETG negru, mai rezistent la frecare și la căldură decât PLA, și am verificat perpendicularitatea cu echerul. Clientul a confirmat că pompa funcționează și i-am făcut și piese de rezervă."]
       ],
       models: [
         { image: "pla-prototype.jpg", material: "PLA", name: "V1 – prototip de probă", text: "Primul model, printat din PLA alb ca să verificăm rapid forma, dimensiunile și angrenarea.", tested: "montajul și angrenarea la client.", outcome: "două modificări: roata mai groasă și sensul de lucru inversat." },
-        { image: "final-petg-square-check.jpg", material: "PETG", name: "V2 – piesa finală", text: "Modelul corectat, printat din PETG negru pentru frecare și căldură.", tested: "perpendicularitatea melcului față de roată, cu echerul.", outcome: "piesa finală pentru client." }
+        { image: "final-petg-square-check.jpg", material: "PETG", name: "V2 – piesa finală", text: "Modelul corectat, printat din PETG negru pentru frecare și căldură.", tested: "perpendicularitatea melcului față de roată, cu echerul.", outcome: "funcționează: pompa antrenează din nou uleiul și lanțul este uns. Am făcut și piese de rezervă pentru client." }
       ],
       problems: [
         {
           images: [["worn-worm-threads.webp", "Spirele melcului original, uzate"], ["worn-worm-side.webp", "Melcul uzat, din profil"]],
           title: "Melcul original era uzat",
           problem: "Spirele melcului de pe butucul roții erau tocite și rupte, iar dinții roții aveau urme de uzură. Piesa nu mai transmitea mișcarea la pompă.",
-          correction: "Am reconstruit geometria în FreeCAD și am modelat și pinionul pompei, ca să verific angrenarea înainte de printare.",
+          correction: "Am reconstruit geometria în FreeCAD după dimensiunile și numărul de dinți măsurate de client, și am modelat și pinionul pompei ca să simulez angrenarea înainte de printare.",
           result: "Un model complet al ansamblului, gata de prototip."
         },
         {
@@ -307,10 +309,10 @@ const CASES = [
           result: "Roata finală este mai rigidă și se așază corect."
         },
         {
-          images: [["pla-prototype.jpg", "Prototipul PLA", "50% 22%"]],
+          images: [["pla-prototype-caliper.jpg", "Prototipul PLA, verificat cu șublerul", "50% 80%"]],
           title: "Sensul de lucru era invers",
           problem: "Prototipul a arătat că melcul lucra în sensul opus celui necesar pompei.",
-          correction: "Am inversat sensul de lucru al melcului în model.",
+          correction: "Am schimbat sensul elicei melcului în model, în sensul cerut de pompă.",
           result: "Pompa este antrenată în sensul corect."
         },
         {
@@ -318,20 +320,19 @@ const CASES = [
           title: "PLA nu este potrivit pentru o piesă în frecare",
           problem: "PLA este bun pentru prototip, dar se înmoaie la temperaturi relativ mici și nu este gândit pentru frecare continuă, ca într-un angrenaj de pe o drujbă.",
           correction: "Am printat piesa finală din PETG, mai rezistent la frecare și la căldură.",
-          result: "Piesa finală, cu perpendicularitatea verificată cu echerul."
+          result: "Piesa finală, cu perpendicularitatea verificată cu echerul. Clientul a confirmat că lanțul primește din nou ulei."
         }
       ],
       gallery: [
         ["original-parts.jpg", "Piesele originale: roata cu melc uzată și axul cu pinionul pompei."],
         ["original-pinion.jpg", "Pinionul pompei, văzut de sus."],
-        ["freecad-assembly.jpg", "Ansamblul în FreeCAD: roata cu melc și pinionul pompei."],
         ["worn-gear-back.webp", "Roata originală, fața din spate."]
       ],
       skills: ["Inginerie inversă după o piesă uzată", "Modelarea unui angrenaj cu melc în FreeCAD", "Verificarea angrenării în ansamblu", "Prototipare rapidă și iterație cu clientul", "Alegerea materialului după frecare și căldură", "Control dimensional: perpendicularitate"]
     },
     en: {
       title: "Worm gear for a chainsaw oil pump: reverse engineering",
-      summary: "A replacement part for a customer: I rebuilt the worm gear from the worn original, tested a PLA prototype, corrected the model after the trial fit and printed the final part in PETG.",
+      summary: "A replacement part for a customer: I rebuilt the worm gear from the worn part's dimensions, simulated the meshing, tested a PLA prototype, corrected the model and printed the final part in PETG. The pump works again.",
       meta: { period: "October 2026", role: "Design and manufacturing, for a customer", tools: "FreeCAD (Part Design), FDM printing", materials: "PLA (prototype), PETG (final)" },
       context: [
         "The chainsaw's oil pump, which lubricates the chain, is driven through a gear train: the gear wheel receives the motion, and the worm on its hub drives the pump pinion.",
@@ -339,26 +340,28 @@ const CASES = [
       ],
       inputs: [
         "Photos of the worn original part sent by the customer: the gear wheel with the worm on its hub.",
+        "Rough dimensions and tooth counts, measured by the customer on the original plastic part and on the part that drives it.",
         "The pump pinion that the worm meshes with.",
         "The requirement: a replacement that fits in place of the original and withstands friction and operating heat."
       ],
       path: [
-        ["Analysing the original", "I identified the geometry from the original parts: the number of gear teeth, the diameters, the worm's pitch and profile, the hub and the bore."],
+        ["Analysing the original", "Starting from the customer's rough dimensions, tooth counts and photos, I worked out the geometry: the diameters, the worm's pitch and profile, the hub and the bore."],
         ["Modelling in FreeCAD", "I modelled the gear with the integrated worm and, separately, the pump pinion, so I could check the meshing in an assembly."],
+        ["Simulating the meshing", "I simulated the assembly in FreeCAD: the gear receives the motion, and the worm on its hub drives the pump pinion. I showed the simulation to the customer before printing.", "freecad-assembly.jpg"],
         ["PLA prototype", "I printed a first model in white PLA, quick and cheap, and sent it to the customer for a trial fit."],
         ["Corrections after the trial", "The customer confirmed the changes: a thicker gear side and a reversed working direction."],
-        ["Final part in PETG", "I printed the corrected model in black PETG, which handles friction and heat better than PLA, and checked squareness with a try square."]
+        ["Final part in PETG", "I printed the corrected model in black PETG, which handles friction and heat better than PLA, and checked squareness with a try square. The customer confirmed the pump works, and I also made spare parts for them."]
       ],
       models: [
         { image: "pla-prototype.jpg", material: "PLA", name: "V1 – trial prototype", text: "The first model, printed in white PLA to check the shape, dimensions and meshing quickly.", tested: "fit and meshing at the customer's.", outcome: "two changes: a thicker gear and a reversed working direction." },
-        { image: "final-petg-square-check.jpg", material: "PETG", name: "V2 – final part", text: "The corrected model, printed in black PETG for friction and heat.", tested: "squareness of the worm to the gear, with a try square.", outcome: "the final part for the customer." }
+        { image: "final-petg-square-check.jpg", material: "PETG", name: "V2 – final part", text: "The corrected model, printed in black PETG for friction and heat.", tested: "squareness of the worm to the gear, with a try square.", outcome: "it works: the pump delivers oil again and the chain is lubricated. I also made spare parts for the customer." }
       ],
       problems: [
         {
           images: [["worn-worm-threads.webp", "The original worm threads, worn"], ["worn-worm-side.webp", "The worn worm, side view"]],
           title: "The original worm was worn",
           problem: "The worm threads on the gear hub were worn down and broken, and the gear teeth showed wear. The part no longer drove the pump.",
-          correction: "I rebuilt the geometry in FreeCAD and also modelled the pump pinion, to check the meshing before printing.",
+          correction: "I rebuilt the geometry in FreeCAD from the customer's measured dimensions and tooth counts, and also modelled the pump pinion to simulate the meshing before printing.",
           result: "A complete model of the assembly, ready for a prototype."
         },
         {
@@ -369,10 +372,10 @@ const CASES = [
           result: "The final gear is stiffer and seats correctly."
         },
         {
-          images: [["pla-prototype.jpg", "The PLA prototype", "50% 22%"]],
+          images: [["pla-prototype-caliper.jpg", "The PLA prototype, checked with a caliper", "50% 80%"]],
           title: "The working direction was reversed",
           problem: "The prototype showed that the worm worked in the opposite direction to what the pump needs.",
-          correction: "I reversed the worm's working direction in the model.",
+          correction: "I changed the hand of the worm's helix in the model, to the hand the pump needs.",
           result: "The pump is driven in the correct direction."
         },
         {
@@ -380,13 +383,12 @@ const CASES = [
           title: "PLA is not suited to a part under friction",
           problem: "PLA is fine for a prototype, but it softens at relatively low temperatures and is not meant for continuous friction, as in a chainsaw gear train.",
           correction: "I printed the final part in PETG, which handles friction and heat better.",
-          result: "The final part, with squareness checked using a try square."
+          result: "The final part, with squareness checked using a try square. The customer confirmed the chain is getting oil again."
         }
       ],
       gallery: [
         ["original-parts.jpg", "The original parts: the worn worm gear and the pump shaft with its pinion."],
         ["original-pinion.jpg", "The pump pinion, seen from above."],
-        ["freecad-assembly.jpg", "The FreeCAD assembly: worm gear and pump pinion."],
         ["worn-gear-back.webp", "The original gear, back face."]
       ],
       skills: ["Reverse engineering from a worn part", "Modelling a worm gear in FreeCAD", "Checking the meshing in an assembly", "Rapid prototyping and iteration with the customer", "Choosing the material for friction and heat", "Dimensional check: squareness"]
@@ -590,7 +592,7 @@ ${header(lang, altUrls, false)}
     <div class="wrap">
       <div class="head"><h2>${esc(t.sec.path)}</h2></div>
       <ol class="pf-path">
-        ${d.path.map(([h, p]) => `<li><h3>${esc(h)}</h3><p>${esc(p)}</p></li>`).join("\n        ")}
+        ${d.path.map(([h, p, pic]) => `<li${pic ? ' class="has-pic"' : ""}>${pic ? `<a href="${img(c, pic)}" target="_blank" rel="noopener"><img src="${img(c, pic)}" alt="${esc(h)}" loading="lazy"></a>` : ""}<h3>${esc(h)}</h3><p>${esc(p)}</p></li>`).join("\n        ")}
       </ol>
     </div>
   </section>

@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Roată cu melc pentru pompa de ulei a unei drujbe: inginerie inversă – Dan Marius-Vasile</title>
-<meta name="description" content="Piesă de schimb pentru un client: am reconstruit roata dințată cu melc după piesa originală uzată, am testat un prototip din PLA, am corectat modelul după probă și am printat piesa finală din PETG.">
+<meta name="description" content="Piesă de schimb pentru un client: am reconstruit roata dințată cu melc după dimensiunile piesei uzate, am simulat angrenarea, am testat un prototip din PLA, am corectat modelul și am printat piesa finală din PETG. Pompa funcționează din nou.">
 <link rel="canonical" href="https://proto3d.eu/portfolio/melc-pompa-ulei-drujba/">
 <link rel="alternate" hreflang="ro" href="https://proto3d.eu/portfolio/melc-pompa-ulei-drujba/">
 <link rel="alternate" hreflang="en" href="https://proto3d.eu/en/portfolio/chainsaw-oil-pump-worm/">
 <link rel="alternate" hreflang="x-default" href="https://proto3d.eu/portfolio/melc-pompa-ulei-drujba/">
 <meta property="og:title" content="Roată cu melc pentru pompa de ulei a unei drujbe: inginerie inversă – Dan Marius-Vasile">
-<meta property="og:description" content="Piesă de schimb pentru un client: am reconstruit roata dințată cu melc după piesa originală uzată, am testat un prototip din PLA, am corectat modelul după probă și am printat piesa finală din PETG.">
+<meta property="og:description" content="Piesă de schimb pentru un client: am reconstruit roata dințată cu melc după dimensiunile piesei uzate, am simulat angrenarea, am testat un prototip din PLA, am corectat modelul și am printat piesa finală din PETG. Pompa funcționează din nou.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://proto3d.eu/portfolio/melc-pompa-ulei-drujba/">
 <meta property="og:image" content="https://proto3d.eu/assets/portfolio/worm/freecad-assembly.jpg">
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#14171b">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Roată cu melc pentru pompa de ulei a unei drujbe: inginerie inversă","description":"Piesă de schimb pentru un client: am reconstruit roata dințată cu melc după piesa originală uzată, am testat un prototip din PLA, am corectat modelul după probă și am printat piesa finală din PETG.","url":"https://proto3d.eu/portfolio/melc-pompa-ulei-drujba/","inLanguage":"ro","image":"https://proto3d.eu/assets/portfolio/worm/freecad-assembly.jpg","author":{"@type":"Person","name":"Dan Marius-Vasile","url":"https://proto3d.eu/portfolio/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Roată cu melc pentru pompa de ulei a unei drujbe: inginerie inversă","description":"Piesă de schimb pentru un client: am reconstruit roata dințată cu melc după dimensiunile piesei uzate, am simulat angrenarea, am testat un prototip din PLA, am corectat modelul și am printat piesa finală din PETG. Pompa funcționează din nou.","url":"https://proto3d.eu/portfolio/melc-pompa-ulei-drujba/","inLanguage":"ro","image":"https://proto3d.eu/assets/portfolio/worm/freecad-assembly.jpg","author":{"@type":"Person","name":"Dan Marius-Vasile","url":"https://proto3d.eu/portfolio/"}}</script>
 </head>
 <body class="pf">
 <header class="top">
@@ -40,7 +40,7 @@
   <div class="wrap">
     <a class="pf-back" href="/portfolio/#cases">← Toate studiile de caz</a>
     <h1>Roată cu melc pentru pompa de ulei a unei drujbe: inginerie inversă</h1>
-    <p class="lead">Piesă de schimb pentru un client: am reconstruit roata dințată cu melc după piesa originală uzată, am testat un prototip din PLA, am corectat modelul după probă și am printat piesa finală din PETG.</p>
+    <p class="lead">Piesă de schimb pentru un client: am reconstruit roata dințată cu melc după dimensiunile piesei uzate, am simulat angrenarea, am testat un prototip din PLA, am corectat modelul și am printat piesa finală din PETG. Pompa funcționează din nou.</p>
     <dl class="pf-meta">
       <div><dt>Perioadă</dt><dd>Octombrie 2026</dd></div>
       <div><dt>Rol</dt><dd>Proiectare și fabricație, pentru un client</dd></div>
@@ -60,7 +60,7 @@
       </div>
       <div class="panel">
         <h3>Date de intrare</h3>
-        <ul class="pf-list"><li>Fotografii ale piesei originale uzate, trimise de client: roata dințată cu melcul pe butuc.</li><li>Pinionul pompei cu care angrenează melcul.</li><li>Cerința: o piesă de schimb care să se monteze în locul originalei și să reziste la frecare și la căldura din funcționare.</li></ul>
+        <ul class="pf-list"><li>Fotografii ale piesei originale uzate, trimise de client: roata dințată cu melcul pe butuc.</li><li>Dimensiunile aproximative și numărul de dinți, măsurate de client pe piesa de plastic originală și pe piesa care o antrenează.</li><li>Pinionul pompei cu care angrenează melcul.</li><li>Cerința: o piesă de schimb care să se monteze în locul originalei și să reziste la frecare și la căldura din funcționare.</li></ul>
       </div>
     </div>
   </section>
@@ -69,11 +69,12 @@
     <div class="wrap">
       <div class="head"><h2>Drumul parcurs</h2></div>
       <ol class="pf-path">
-        <li><h3>Analiza piesei originale</h3><p>Am identificat geometria din piesele originale: numărul de dinți ai roții, diametrele, pasul și profilul melcului, butucul și alezajul.</p></li>
+        <li><h3>Analiza piesei originale</h3><p>Am pornit de la dimensiunile aproximative și numărul de dinți trimise de client și de la fotografii, și am stabilit geometria: diametrele, pasul și profilul melcului, butucul și alezajul.</p></li>
         <li><h3>Modelarea în FreeCAD</h3><p>Am modelat roata dințată cu melcul integrat și, separat, pinionul pompei, ca să pot verifica angrenarea în ansamblu.</p></li>
+        <li class="has-pic"><a href="/assets/portfolio/worm/freecad-assembly.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/worm/freecad-assembly.jpg" alt="Simularea angrenării" loading="lazy"></a><h3>Simularea angrenării</h3><p>Am simulat ansamblul în FreeCAD: roata primește mișcarea, iar melcul de pe butucul ei antrenează pinionul pompei. Am arătat simularea clientului înainte de printare.</p></li>
         <li><h3>Prototip din PLA</h3><p>Am printat un prim model din PLA alb, rapid și ieftin, și l-am trimis clientului pentru probă.</p></li>
         <li><h3>Corecții după probă</h3><p>Clientul a confirmat modificările: partea roții mai groasă și sensul de lucru inversat.</p></li>
-        <li><h3>Piesa finală din PETG</h3><p>Am printat modelul corectat din PETG negru, mai rezistent la frecare și la căldură decât PLA, și am verificat perpendicularitatea cu echerul.</p></li>
+        <li><h3>Piesa finală din PETG</h3><p>Am printat modelul corectat din PETG negru, mai rezistent la frecare și la căldură decât PLA, și am verificat perpendicularitatea cu echerul. Clientul a confirmat că pompa funcționează și i-am făcut și piese de rezervă.</p></li>
       </ol>
     </div>
   </section>
@@ -99,7 +100,7 @@
             <h3>V2 – piesa finală</h3>
             <p>Modelul corectat, printat din PETG negru pentru frecare și căldură.</p>
             <p><strong>Testat:</strong> perpendicularitatea melcului față de roată, cu echerul.</p>
-            <p><strong>Concluzie:</strong> piesa finală pentru client.</p>
+            <p><strong>Concluzie:</strong> funcționează: pompa antrenează din nou uleiul și lanțul este uns. Am făcut și piese de rezervă pentru client.</p>
           </div>
         </article>
       </div>
@@ -114,7 +115,7 @@
           <span class="pf-num">01</span>
           <h3>Melcul original era uzat</h3>
           <p><strong class="bad">Problema.</strong> Spirele melcului de pe butucul roții erau tocite și rupte, iar dinții roții aveau urme de uzură. Piesa nu mai transmitea mișcarea la pompă.</p>
-          <p><strong class="good">Corecția.</strong> Am reconstruit geometria în FreeCAD și am modelat și pinionul pompei, ca să verific angrenarea înainte de printare.</p>
+          <p><strong class="good">Corecția.</strong> Am reconstruit geometria în FreeCAD după dimensiunile și numărul de dinți măsurate de client, și am modelat și pinionul pompei ca să simulez angrenarea înainte de printare.</p>
           <p><strong>Rezultat.</strong> Un model complet al ansamblului, gata de prototip.</p>
         </div>
         <figure class="pf-photos pf-photos-2"><a href="/assets/portfolio/worm/worn-worm-threads.webp" target="_blank" rel="noopener"><img src="/assets/portfolio/worm/worn-worm-threads.webp" alt="Spirele melcului original, uzate" loading="lazy"></a><a href="/assets/portfolio/worm/worn-worm-side.webp" target="_blank" rel="noopener"><img src="/assets/portfolio/worm/worn-worm-side.webp" alt="Melcul uzat, din profil" loading="lazy"></a><figcaption>Spirele melcului original, uzate · Melcul uzat, din profil</figcaption></figure>
@@ -134,10 +135,10 @@
           <span class="pf-num">03</span>
           <h3>Sensul de lucru era invers</h3>
           <p><strong class="bad">Problema.</strong> Prototipul a arătat că melcul lucra în sensul opus celui necesar pompei.</p>
-          <p><strong class="good">Corecția.</strong> Am inversat sensul de lucru al melcului în model.</p>
+          <p><strong class="good">Corecția.</strong> Am schimbat sensul elicei melcului în model, în sensul cerut de pompă.</p>
           <p><strong>Rezultat.</strong> Pompa este antrenată în sensul corect.</p>
         </div>
-        <figure class="pf-photos pf-photos-1"><a href="/assets/portfolio/worm/pla-prototype.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/worm/pla-prototype.jpg" alt="Prototipul PLA" loading="lazy" style="object-position:50% 22%"></a><figcaption>Prototipul PLA</figcaption></figure>
+        <figure class="pf-photos pf-photos-1"><a href="/assets/portfolio/worm/pla-prototype-caliper.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/worm/pla-prototype-caliper.jpg" alt="Prototipul PLA, verificat cu șublerul" loading="lazy" style="object-position:50% 80%"></a><figcaption>Prototipul PLA, verificat cu șublerul</figcaption></figure>
       </div>
       <div class="pf-problem">
         <div class="pf-problem-text">
@@ -145,7 +146,7 @@
           <h3>PLA nu este potrivit pentru o piesă în frecare</h3>
           <p><strong class="bad">Problema.</strong> PLA este bun pentru prototip, dar se înmoaie la temperaturi relativ mici și nu este gândit pentru frecare continuă, ca într-un angrenaj de pe o drujbă.</p>
           <p><strong class="good">Corecția.</strong> Am printat piesa finală din PETG, mai rezistent la frecare și la căldură.</p>
-          <p><strong>Rezultat.</strong> Piesa finală, cu perpendicularitatea verificată cu echerul.</p>
+          <p><strong>Rezultat.</strong> Piesa finală, cu perpendicularitatea verificată cu echerul. Clientul a confirmat că lanțul primește din nou ulei.</p>
         </div>
         <figure class="pf-photos pf-photos-1"><a href="/assets/portfolio/worm/final-petg-square-check.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/worm/final-petg-square-check.jpg" alt="Piesa finală din PETG, verificată cu echerul" loading="lazy" style="object-position:40% 62%"></a><figcaption>Piesa finală din PETG, verificată cu echerul</figcaption></figure>
       </div>
@@ -160,7 +161,6 @@
       <div class="pf-gallery">
         <figure><a href="/assets/portfolio/worm/original-parts.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/worm/original-parts.jpg" alt="Piesele originale: roata cu melc uzată și axul cu pinionul pompei." loading="lazy"></a><figcaption>Piesele originale: roata cu melc uzată și axul cu pinionul pompei.</figcaption></figure>
         <figure><a href="/assets/portfolio/worm/original-pinion.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/worm/original-pinion.jpg" alt="Pinionul pompei, văzut de sus." loading="lazy"></a><figcaption>Pinionul pompei, văzut de sus.</figcaption></figure>
-        <figure><a href="/assets/portfolio/worm/freecad-assembly.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/worm/freecad-assembly.jpg" alt="Ansamblul în FreeCAD: roata cu melc și pinionul pompei." loading="lazy"></a><figcaption>Ansamblul în FreeCAD: roata cu melc și pinionul pompei.</figcaption></figure>
         <figure><a href="/assets/portfolio/worm/worn-gear-back.webp" target="_blank" rel="noopener"><img src="/assets/portfolio/worm/worn-gear-back.webp" alt="Roata originală, fața din spate." loading="lazy"></a><figcaption>Roata originală, fața din spate.</figcaption></figure>
       </div>
     </div>

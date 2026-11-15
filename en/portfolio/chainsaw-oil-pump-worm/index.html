@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Worm gear for a chainsaw oil pump: reverse engineering – Dan Marius-Vasile</title>
-<meta name="description" content="A replacement part for a customer: I rebuilt the worm gear from the worn original, tested a PLA prototype, corrected the model after the trial fit and printed the final part in PETG.">
+<meta name="description" content="A replacement part for a customer: I rebuilt the worm gear from the worn part's dimensions, simulated the meshing, tested a PLA prototype, corrected the model and printed the final part in PETG. The pump works again.">
 <link rel="canonical" href="https://proto3d.eu/en/portfolio/chainsaw-oil-pump-worm/">
 <link rel="alternate" hreflang="ro" href="https://proto3d.eu/portfolio/melc-pompa-ulei-drujba/">
 <link rel="alternate" hreflang="en" href="https://proto3d.eu/en/portfolio/chainsaw-oil-pump-worm/">
 <link rel="alternate" hreflang="x-default" href="https://proto3d.eu/portfolio/melc-pompa-ulei-drujba/">
 <meta property="og:title" content="Worm gear for a chainsaw oil pump: reverse engineering – Dan Marius-Vasile">
-<meta property="og:description" content="A replacement part for a customer: I rebuilt the worm gear from the worn original, tested a PLA prototype, corrected the model after the trial fit and printed the final part in PETG.">
+<meta property="og:description" content="A replacement part for a customer: I rebuilt the worm gear from the worn part's dimensions, simulated the meshing, tested a PLA prototype, corrected the model and printed the final part in PETG. The pump works again.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://proto3d.eu/en/portfolio/chainsaw-oil-pump-worm/">
 <meta property="og:image" content="https://proto3d.eu/assets/portfolio/worm/freecad-assembly.jpg">
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#14171b">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Worm gear for a chainsaw oil pump: reverse engineering","description":"A replacement part for a customer: I rebuilt the worm gear from the worn original, tested a PLA prototype, corrected the model after the trial fit and printed the final part in PETG.","url":"https://proto3d.eu/en/portfolio/chainsaw-oil-pump-worm/","inLanguage":"en","image":"https://proto3d.eu/assets/portfolio/worm/freecad-assembly.jpg","author":{"@type":"Person","name":"Dan Marius-Vasile","url":"https://proto3d.eu/en/portfolio/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Worm gear for a chainsaw oil pump: reverse engineering","description":"A replacement part for a customer: I rebuilt the worm gear from the worn part's dimensions, simulated the meshing, tested a PLA prototype, corrected the model and printed the final part in PETG. The pump works again.","url":"https://proto3d.eu/en/portfolio/chainsaw-oil-pump-worm/","inLanguage":"en","image":"https://proto3d.eu/assets/portfolio/worm/freecad-assembly.jpg","author":{"@type":"Person","name":"Dan Marius-Vasile","url":"https://proto3d.eu/en/portfolio/"}}</script>
 </head>
 <body class="pf">
 <header class="top">
@@ -40,7 +40,7 @@
   <div class="wrap">
     <a class="pf-back" href="/en/portfolio/#cases">← All case studies</a>
     <h1>Worm gear for a chainsaw oil pump: reverse engineering</h1>
-    <p class="lead">A replacement part for a customer: I rebuilt the worm gear from the worn original, tested a PLA prototype, corrected the model after the trial fit and printed the final part in PETG.</p>
+    <p class="lead">A replacement part for a customer: I rebuilt the worm gear from the worn part's dimensions, simulated the meshing, tested a PLA prototype, corrected the model and printed the final part in PETG. The pump works again.</p>
     <dl class="pf-meta">
       <div><dt>Period</dt><dd>October 2026</dd></div>
       <div><dt>Role</dt><dd>Design and manufacturing, for a customer</dd></div>
@@ -60,7 +60,7 @@
       </div>
       <div class="panel">
         <h3>Inputs</h3>
-        <ul class="pf-list"><li>Photos of the worn original part sent by the customer: the gear wheel with the worm on its hub.</li><li>The pump pinion that the worm meshes with.</li><li>The requirement: a replacement that fits in place of the original and withstands friction and operating heat.</li></ul>
+        <ul class="pf-list"><li>Photos of the worn original part sent by the customer: the gear wheel with the worm on its hub.</li><li>Rough dimensions and tooth counts, measured by the customer on the original plastic part and on the part that drives it.</li><li>The pump pinion that the worm meshes with.</li><li>The requirement: a replacement that fits in place of the original and withstands friction and operating heat.</li></ul>
       </div>
     </div>
   </section>
@@ -69,11 +69,12 @@
     <div class="wrap">
       <div class="head"><h2>The path taken</h2></div>
       <ol class="pf-path">
-        <li><h3>Analysing the original</h3><p>I identified the geometry from the original parts: the number of gear teeth, the diameters, the worm's pitch and profile, the hub and the bore.</p></li>
+        <li><h3>Analysing the original</h3><p>Starting from the customer's rough dimensions, tooth counts and photos, I worked out the geometry: the diameters, the worm's pitch and profile, the hub and the bore.</p></li>
         <li><h3>Modelling in FreeCAD</h3><p>I modelled the gear with the integrated worm and, separately, the pump pinion, so I could check the meshing in an assembly.</p></li>
+        <li class="has-pic"><a href="/assets/portfolio/worm/freecad-assembly.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/worm/freecad-assembly.jpg" alt="Simulating the meshing" loading="lazy"></a><h3>Simulating the meshing</h3><p>I simulated the assembly in FreeCAD: the gear receives the motion, and the worm on its hub drives the pump pinion. I showed the simulation to the customer before printing.</p></li>
         <li><h3>PLA prototype</h3><p>I printed a first model in white PLA, quick and cheap, and sent it to the customer for a trial fit.</p></li>
         <li><h3>Corrections after the trial</h3><p>The customer confirmed the changes: a thicker gear side and a reversed working direction.</p></li>
-        <li><h3>Final part in PETG</h3><p>I printed the corrected model in black PETG, which handles friction and heat better than PLA, and checked squareness with a try square.</p></li>
+        <li><h3>Final part in PETG</h3><p>I printed the corrected model in black PETG, which handles friction and heat better than PLA, and checked squareness with a try square. The customer confirmed the pump works, and I also made spare parts for them.</p></li>
       </ol>
     </div>
   </section>
@@ -99,7 +100,7 @@
             <h3>V2 – final part</h3>
             <p>The corrected model, printed in black PETG for friction and heat.</p>
             <p><strong>Tested:</strong> squareness of the worm to the gear, with a try square.</p>
-            <p><strong>Outcome:</strong> the final part for the customer.</p>
+            <p><strong>Outcome:</strong> it works: the pump delivers oil again and the chain is lubricated. I also made spare parts for the customer.</p>
           </div>
         </article>
       </div>
@@ -114,7 +115,7 @@
           <span class="pf-num">01</span>
           <h3>The original worm was worn</h3>
           <p><strong class="bad">Problem.</strong> The worm threads on the gear hub were worn down and broken, and the gear teeth showed wear. The part no longer drove the pump.</p>
-          <p><strong class="good">Correction.</strong> I rebuilt the geometry in FreeCAD and also modelled the pump pinion, to check the meshing before printing.</p>
+          <p><strong class="good">Correction.</strong> I rebuilt the geometry in FreeCAD from the customer's measured dimensions and tooth counts, and also modelled the pump pinion to simulate the meshing before printing.</p>
           <p><strong>Result.</strong> A complete model of the assembly, ready for a prototype.</p>
         </div>
         <figure class="pf-photos pf-photos-2"><a href="/assets/portfolio/worm/worn-worm-threads.webp" target="_blank" rel="noopener"><img src="/assets/portfolio/worm/worn-worm-threads.webp" alt="The original worm threads, worn" loading="lazy"></a><a href="/assets/portfolio/worm/worn-worm-side.webp" target="_blank" rel="noopener"><img src="/assets/portfolio/worm/worn-worm-side.webp" alt="The worn worm, side view" loading="lazy"></a><figcaption>The original worm threads, worn · The worn worm, side view</figcaption></figure>
@@ -134,10 +135,10 @@
           <span class="pf-num">03</span>
           <h3>The working direction was reversed</h3>
           <p><strong class="bad">Problem.</strong> The prototype showed that the worm worked in the opposite direction to what the pump needs.</p>
-          <p><strong class="good">Correction.</strong> I reversed the worm's working direction in the model.</p>
+          <p><strong class="good">Correction.</strong> I changed the hand of the worm's helix in the model, to the hand the pump needs.</p>
           <p><strong>Result.</strong> The pump is driven in the correct direction.</p>
         </div>
-        <figure class="pf-photos pf-photos-1"><a href="/assets/portfolio/worm/pla-prototype.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/worm/pla-prototype.jpg" alt="The PLA prototype" loading="lazy" style="object-position:50% 22%"></a><figcaption>The PLA prototype</figcaption></figure>
+        <figure class="pf-photos pf-photos-1"><a href="/assets/portfolio/worm/pla-prototype-caliper.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/worm/pla-prototype-caliper.jpg" alt="The PLA prototype, checked with a caliper" loading="lazy" style="object-position:50% 80%"></a><figcaption>The PLA prototype, checked with a caliper</figcaption></figure>
       </div>
       <div class="pf-problem">
         <div class="pf-problem-text">
@@ -145,7 +146,7 @@
           <h3>PLA is not suited to a part under friction</h3>
           <p><strong class="bad">Problem.</strong> PLA is fine for a prototype, but it softens at relatively low temperatures and is not meant for continuous friction, as in a chainsaw gear train.</p>
           <p><strong class="good">Correction.</strong> I printed the final part in PETG, which handles friction and heat better.</p>
-          <p><strong>Result.</strong> The final part, with squareness checked using a try square.</p>
+          <p><strong>Result.</strong> The final part, with squareness checked using a try square. The customer confirmed the chain is getting oil again.</p>
         </div>
         <figure class="pf-photos pf-photos-1"><a href="/assets/portfolio/worm/final-petg-square-check.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/worm/final-petg-square-check.jpg" alt="The final PETG part, checked with a try square" loading="lazy" style="object-position:40% 62%"></a><figcaption>The final PETG part, checked with a try square</figcaption></figure>
       </div>
@@ -160,7 +161,6 @@
       <div class="pf-gallery">
         <figure><a href="/assets/portfolio/worm/original-parts.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/worm/original-parts.jpg" alt="The original parts: the worn worm gear and the pump shaft with its pinion." loading="lazy"></a><figcaption>The original parts: the worn worm gear and the pump shaft with its pinion.</figcaption></figure>
         <figure><a href="/assets/portfolio/worm/original-pinion.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/worm/original-pinion.jpg" alt="The pump pinion, seen from above." loading="lazy"></a><figcaption>The pump pinion, seen from above.</figcaption></figure>
-        <figure><a href="/assets/portfolio/worm/freecad-assembly.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/worm/freecad-assembly.jpg" alt="The FreeCAD assembly: worm gear and pump pinion." loading="lazy"></a><figcaption>The FreeCAD assembly: worm gear and pump pinion.</figcaption></figure>
         <figure><a href="/assets/portfolio/worm/worn-gear-back.webp" target="_blank" rel="noopener"><img src="/assets/portfolio/worm/worn-gear-back.webp" alt="The original gear, back face." loading="lazy"></a><figcaption>The original gear, back face.</figcaption></figure>
       </div>
     </div>
