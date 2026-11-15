@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Robot-held laser scanner mount: design and FEA – Dan Marius-Vasile</title>
+<meta name="description" content="A single part that holds a 1.48 kg laser profiler 320 mm inside a battery tray, from the robot flange. I started with welded plate versions, which failed on Y and on vibration, stiffened the model, found the base was the weak point, and ended with a closed-section arm that keeps the laser spot within the allowed displacement on X, Y and Z, at 140.5 Hz.">
+<link rel="canonical" href="https://proto3d.eu/en/portfolio/robot-laser-scanner-mount-fea/">
+<link rel="alternate" hreflang="ro" href="https://proto3d.eu/portfolio/suport-scanner-laser-robot-fea/">
+<link rel="alternate" hreflang="en" href="https://proto3d.eu/en/portfolio/robot-laser-scanner-mount-fea/">
+<link rel="alternate" hreflang="x-default" href="https://proto3d.eu/portfolio/suport-scanner-laser-robot-fea/">
+<meta property="og:title" content="Robot-held laser scanner mount: design and FEA – Dan Marius-Vasile">
+<meta property="og:description" content="A single part that holds a 1.48 kg laser profiler 320 mm inside a battery tray, from the robot flange. I started with welded plate versions, which failed on Y and on vibration, stiffened the model, found the base was the weak point, and ended with a closed-section arm that keeps the laser spot within the allowed displacement on X, Y and Z, at 140.5 Hz.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://proto3d.eu/en/portfolio/robot-laser-scanner-mount-fea/">
+<meta property="og:image" content="https://proto3d.eu/assets/portfolio/arm/welded-stress.jpg">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#14171b">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Robot-held laser scanner mount: design and FEA","description":"A single part that holds a 1.48 kg laser profiler 320 mm inside a battery tray, from the robot flange. I started with welded plate versions, which failed on Y and on vibration, stiffened the model, found the base was the weak point, and ended with a closed-section arm that keeps the laser spot within the allowed displacement on X, Y and Z, at 140.5 Hz.","url":"https://proto3d.eu/en/portfolio/robot-laser-scanner-mount-fea/","inLanguage":"en","image":"https://proto3d.eu/assets/portfolio/arm/welded-stress.jpg","author":{"@type":"Person","name":"Dan Marius-Vasile","url":"https://proto3d.eu/en/portfolio/"}}</script>
+</head>
+<body class="pf">
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand pf-brand" href="/en/portfolio/"><span class="mono">DM</span><span>Dan Marius-Vasile</span></a>
+    <nav aria-label="Main">
+      <div class="links">
+        <a href="/en/portfolio/#cases">Case studies</a>
+        <a href="/en/portfolio/#contact">Contact</a>
+        <a href="/en/">proto3d ↗</a>
+      </div>
+      <a class="lang" href="/portfolio/suport-scanner-laser-robot-fea/" hreflang="ro" lang="ro" title="Vezi în română">RO</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero pf-hero pf-case-hero">
+  <div class="wrap">
+    <a class="pf-back" href="/en/portfolio/#cases">← All case studies</a>
+    <h1>Robot-held laser scanner mount: design and FEA</h1>
+    <p class="lead">A single part that holds a 1.48 kg laser profiler 320 mm inside a battery tray, from the robot flange. I started with welded plate versions, which failed on Y and on vibration, stiffened the model, found the base was the weak point, and ended with a closed-section arm that keeps the laser spot within the allowed displacement on X, Y and Z, at 140.5 Hz.</p>
+    <dl class="pf-meta">
+      <div><dt>Period</dt><dd>November 2026</dd></div>
+      <div><dt>Role</dt><dd>Design and FEA, own project</dd></div>
+      <div><dt>Tools</dt><dd>FreeCAD, Gmsh, CalculiX</dd></div>
+      <div><dt>Materials</dt><dd>EN AW-6082 T6 aluminium</dd></div>
+    </dl>
+  </div>
+</section>
+
+<article class="pf-article">
+  <section class="block">
+    <div class="wrap pf-two">
+      <div>
+        <h2>Context</h2>
+        <p>A robot scans the sealing seam of a battery tray with a laser profiler. The sensor has to reach 320 mm inside the tray wall while the robot flange stays outside it, and the mount has to pass between the clamp towers, the module stack and the gantry ceiling.</p>
+        <p>The mount has to be light, so it doesn't load the robot's wrist, yet stiff enough that the laser spot moves no more than 0.05 mm under the robot's accelerations, with the first natural frequency above 110 Hz.</p>
+      </div>
+      <div class="panel">
+        <h3>Inputs</h3>
+        <ul class="pf-list"><li>The sensor: a 1.48 kg laser profiler, with its centre of mass and inertia given, held only by its top face with 3 M4 screws.</li><li>The ISO 9409-1-50 robot flange with 4 × M6, and the wrist cylinder (Ø160 × 260 mm), which must not be touched.</li><li>The keep-out volumes: the floor, the tray wall, the module stack, the two clamp towers, the ceiling and the laser beam volume.</li><li>The entry path: slide into the tray, drop 200 mm and sweep ±40 mm, with at least 3 mm clearance to everything around.</li><li>Material and manufacturing: EN AW-6082 T6; CNC milling, welding and laser-cut plate, no bent plate.</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block alt">
+    <div class="wrap">
+      <div class="head"><h2>Client requirements</h2></div>
+      <div class="pf-table-wrap"><table class="pf-table">
+        <thead><tr><th>Requirement</th><th>Limit</th></tr></thead>
+        <tbody><tr><td>Laser spot displacement, under 25 m/s² along X, Y and Z in turn</td><td>≤ 0.05 mm in each direction</td></tr><tr><td>First natural frequency</td><td>≥ 110 Hz</td></tr><tr><td>Mount mass (sensor excluded)</td><td>≤ 3.5 kg</td></tr><tr><td>Inertia at the flange (sensor included)</td><td>≤ 0.55 kg·m²</td></tr><tr><td>Clearance along the whole entry path</td><td>≥ 3 mm</td></tr><tr><td>Robot flange</td><td>ISO 9409-1-50, 4 × M6 on Ø50</td></tr><tr><td>Sensor mounting</td><td>top face only, 3 × M4, flat Ø10 around each hole</td></tr><tr><td>Walls and holes</td><td>walls ≥ 3 mm, holes ≥ Ø3, no enclosed voids</td></tr><tr><td>Material</td><td>EN AW-6082 T6: E = 70 GPa, ν = 0.3, ρ = 2700 kg/m³</td></tr></tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="head"><h2>The path taken</h2></div>
+      <ol class="pf-path">
+        <li><h3>Requirements turned into load cases</h3><p>Three static cases, with 25 m/s² along X, Y and Z in turn, and a modal analysis. The sensor is a rigid body joined to the mount only at its top face, and the mount is fixed on the Ø63 flange disc.</p></li>
+        <li class="has-pic"><a href="/assets/portfolio/arm/welded-cad.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/arm/welded-cad.jpg" alt="First versions: welded construction" loading="lazy"></a><h3>First versions: welded construction</h3><p>I modelled in FreeCAD a mount of laser-cut, welded plates with ribs and lightening cut-outs, placed directly in the robot cell between the keep-out volumes.</p></li>
+        <li class="has-pic"><a href="/assets/portfolio/arm/welded-mesh.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/arm/welded-mesh.jpg" alt="Gmsh mesh and CalculiX solve" loading="lazy"></a><h3>Gmsh mesh and CalculiX solve</h3><p>I meshed the model with Gmsh, finer at the sensor interface, and ran the three static cases and the modal analysis in CalculiX.</p></li>
+        <li><h3>Reading the results at the laser spot</h3><p>I checked the spot displacement in each direction and the first natural frequency against the client's limits.</p></li>
+        <li><h3>Iterations: stiffening the model</h3><p>The welded versions failed, mostly on Y and on vibration. I added reinforcements, but the base at the flange stayed too weak.</p></li>
+        <li><h3>Final version</h3><p>An L-shaped arm with a closed section and a stiff base at the flange. It passes on X, Y and Z, with a first natural frequency of 140.5 Hz at 3.09 kg.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  
+
+  <section class="block alt">
+    <div class="wrap">
+      <div class="head"><h2>Problems and corrections</h2></div>
+      <div class="pf-problem">
+        <div class="pf-problem-text">
+          <span class="pf-num">01</span>
+          <h3>The welded version failed on Y and on vibration</h3>
+          <p><strong class="bad">Problem.</strong> The open, welded plate construction was too soft sideways: the spot displacement along Y was above 0.05 mm, and the first natural frequency was below the 110 Hz limit.</p>
+          <p><strong class="good">Correction.</strong> I added reinforcements: ribs, cross plates and extra walls between the flange and the sensor interface.</p>
+          <p><strong>Result.</strong> Stiffness went up, but not enough, and every reinforcement added mass.</p>
+        </div>
+        <figure class="pf-photos pf-photos-1"><a href="/assets/portfolio/arm/welded-stress.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/arm/welded-stress.jpg" alt="Stress in the welded version: red is where it concentrates" loading="lazy"></a><figcaption>Stress in the welded version: red is where it concentrates</figcaption></figure>
+      </div>
+      <div class="pf-problem">
+        <div class="pf-problem-text">
+          <span class="pf-num">02</span>
+          <h3>The base was too weak</h3>
+          <p><strong class="bad">Problem.</strong> The analysis showed the problem wasn't the arm but the base: the stress concentrated at the joint with the robot flange, and all the deflection started there.</p>
+          <p><strong class="good">Correction.</strong> I dropped the reinforcements on the arm and rebuilt the mount as an L-shaped arm with a closed section and a stiff base at the flange.</p>
+          <p><strong>Result.</strong> The spot displacement dropped below the limit in all three directions, and the first natural frequency rose to 140.5 Hz.</p>
+        </div>
+        <figure class="pf-photos pf-photos-1"><a href="/assets/portfolio/arm/base-stress.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/arm/base-stress.jpg" alt="Stress concentrated at the base, next to the flange" loading="lazy"></a><figcaption>Stress concentrated at the base, next to the flange</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="head"><h2>Final result</h2><p class="muted">The maximum displacement in the model for each case and the first natural frequency, from the CalculiX results. The mass comes from the support reaction at 25 m/s², minus the 1.48 kg sensor.</p></div>
+      <div class="pf-table-wrap"><table class="pf-table">
+        <thead><tr><th>Check</th><th>Limit</th><th>Achieved</th><th></th></tr></thead>
+        <tbody><tr><td>Displacement along X, under 25 m/s² along X</td><td>≤ 50 µm</td><td><strong>15.25 µm</strong></td><td class="ok">✓</td></tr><tr><td>Displacement along Y, under 25 m/s² along Y</td><td>≤ 50 µm</td><td><strong>38.81 µm</strong></td><td class="ok">✓</td></tr><tr><td>Displacement along Z, under 25 m/s² along Z</td><td>≤ 50 µm</td><td><strong>36.59 µm</strong></td><td class="ok">✓</td></tr><tr><td>First natural frequency (modal analysis)</td><td>≥ 110 Hz</td><td><strong>140.5 Hz</strong></td><td class="ok">✓</td></tr><tr><td>Mount mass, sensor excluded</td><td>≤ 3.5 kg</td><td><strong>3.09 kg</strong></td><td class="ok">✓</td></tr></tbody>
+      </table></div>
+    </div>
+  </section>
+
+  
+
+  <section class="block alt">
+    <div class="wrap">
+      <div class="head"><h2>Project images</h2></div>
+      <div class="pf-gallery">
+        <figure><a href="/assets/portfolio/arm/final-disp-x.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/arm/final-disp-x.jpg" alt="Final version, displacement along X: 15.25 µm maximum." loading="lazy"></a><figcaption>Final version, displacement along X: 15.25 µm maximum.</figcaption></figure>
+        <figure><a href="/assets/portfolio/arm/final-disp-y.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/arm/final-disp-y.jpg" alt="Final version, displacement along Y: 38.81 µm maximum." loading="lazy"></a><figcaption>Final version, displacement along Y: 38.81 µm maximum.</figcaption></figure>
+        <figure><a href="/assets/portfolio/arm/final-disp-z.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/arm/final-disp-z.jpg" alt="Final version, displacement along Z: 36.59 µm maximum." loading="lazy"></a><figcaption>Final version, displacement along Z: 36.59 µm maximum.</figcaption></figure>
+        <figure><a href="/assets/portfolio/arm/welded-mesh.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/arm/welded-mesh.jpg" alt="A welded version, with the finite element mesh and the fixed flange support (red)." loading="lazy"></a><figcaption>A welded version, with the finite element mesh and the fixed flange support (red).</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="head"><h2>What it shows</h2></div>
+      <ul class="pf-skills"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Turning client requirements into load cases</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Static and modal analysis (Gmsh + CalculiX)</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>The sensor as a rigid mass joined to the mount</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Design iterations driven by FEA results</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Finding the weak point from the stress distribution</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Design for manufacturing: welding, CNC, laser-cut plate</li></ul>
+      <p class="pf-next"><a class="btn primary" href="/en/portfolio/body-in-white-welding-fixtures/">Next case: Robotic welding fixtures for car body assemblies →</a></p>
+    </div>
+  </section>
+</article>
+<section id="contact" class="block alt">
+  <div class="wrap">
+    <div class="head"><h2>Contact</h2><p class="muted">For design, tooling or simulation work, get in touch directly.</p></div>
+    <div class="pf-contact">
+      <a class="line" href="mailto:dan_marius_8@yahoo.com" data-mail><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span><small>Email</small>dan_marius_8@yahoo.com</span></a>
+      <a class="line" href="tel:+40751890165" data-tel><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span><small>Phone</small>+40751890165</span></a>
+      <a class="line" href="https://www.linkedin.com/in/dan-marius-17394a5" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 11v6"/></svg><span><small>LinkedIn</small>dan-marius-17394a5</span></a>
+      <a class="line" href="https://github.com/dan-marius" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></svg><span><small>GitHub</small>dan-marius</span></a>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap foot">
+    <span class="brand pf-brand"><span class="mono">DM</span><span>Dan Marius-Vasile</span></span>
+    <span>© 2026 · Engineering portfolio · <a href="/en/">proto3d.eu</a></span>
+  </div>
+</footer>
+</body>
+</html>

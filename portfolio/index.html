@@ -4,22 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dan Marius-Vasile – portofoliu inginerie mecanică și proiectare CAD</title>
-<meta name="description" content="Portofoliu de inginerie mecanică: dispozitive de sudură pentru caroserii auto, grippere, posturi robotizate, simulări de cinematică și verificări de coliziuni. CATIA V5, SolidWorks, Siemens NX, FreeCAD.">
+<meta name="description" content="Portofoliu de inginerie mecanică: analiză FEA, dispozitive de sudură pentru caroserii auto, grippere, posturi robotizate, simulări de cinematică și verificări de coliziuni. CATIA V5, SolidWorks, Siemens NX, FreeCAD.">
 <link rel="canonical" href="https://proto3d.eu/portfolio/">
 <link rel="alternate" hreflang="ro" href="https://proto3d.eu/portfolio/">
 <link rel="alternate" hreflang="en" href="https://proto3d.eu/en/portfolio/">
 <link rel="alternate" hreflang="x-default" href="https://proto3d.eu/portfolio/">
 <meta property="og:title" content="Dan Marius-Vasile – portofoliu inginerie mecanică și proiectare CAD">
-<meta property="og:description" content="Portofoliu de inginerie mecanică: dispozitive de sudură pentru caroserii auto, grippere, posturi robotizate, simulări de cinematică și verificări de coliziuni. CATIA V5, SolidWorks, Siemens NX, FreeCAD.">
+<meta property="og:description" content="Portofoliu de inginerie mecanică: analiză FEA, dispozitive de sudură pentru caroserii auto, grippere, posturi robotizate, simulări de cinematică și verificări de coliziuni. CATIA V5, SolidWorks, Siemens NX, FreeCAD.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://proto3d.eu/portfolio/">
-<meta property="og:image" content="https://proto3d.eu/assets/portfolio/welding/fixture-assemblies.jpg">
+<meta property="og:image" content="https://proto3d.eu/assets/portfolio/arm/welded-stress.jpg">
 <meta property="og:locale" content="ro_RO">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#14171b">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Dan Marius-Vasile","jobTitle":"Inginer mecanic · Proiectare CAD, dispozitive și simulare","url":"https://proto3d.eu/portfolio/","telephone":"+40751890165","email":"dan_marius_8@yahoo.com","address":{"@type":"PostalAddress","addressLocality":"Baia Mare","addressCountry":"RO"},"sameAs":["https://www.linkedin.com/in/dan-marius-17394a5","https://github.com/dan-marius"],"knowsAbout":["CATIA V5","SolidWorks","Siemens NX","Welding fixtures","Body in white tooling","Kinematics simulation","FreeCAD","Python"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Dan Marius-Vasile","jobTitle":"Inginer mecanic · Proiectare CAD, dispozitive și simulare","url":"https://proto3d.eu/portfolio/","telephone":"+40751890165","email":"dan_marius_8@yahoo.com","address":{"@type":"PostalAddress","addressLocality":"Baia Mare","addressCountry":"RO"},"sameAs":["https://www.linkedin.com/in/dan-marius-17394a5","https://github.com/dan-marius"],"knowsAbout":["CATIA V5","SolidWorks","Siemens NX","Welding fixtures","Body in white tooling","Kinematics simulation","Finite element analysis","FreeCAD","CalculiX","Python"]}</script>
 </head>
 <body class="pf">
 <header class="top">
@@ -47,7 +47,7 @@
       <div><dt>15+</dt><dd>ani de proiectare 3D, zilnic</dd></div>
       <div><dt>40+</dt><dd>familii de produse industrializate</dd></div>
     </dl>
-    <div class="pf-tools"><span class="muted">Instrumente:</span> <span class="chip">CATIA V5</span> <span class="chip">SolidWorks</span> <span class="chip">Siemens NX</span> <span class="chip">AutoCAD</span> <span class="chip">FreeCAD</span> <span class="chip">Python</span> <span class="chip">SAP</span></div>
+    <div class="pf-tools"><span class="muted">Instrumente:</span> <span class="chip">CATIA V5</span> <span class="chip">SolidWorks</span> <span class="chip">Siemens NX</span> <span class="chip">AutoCAD</span> <span class="chip">FreeCAD</span> <span class="chip">Gmsh + CalculiX (FEA)</span> <span class="chip">Python</span> <span class="chip">SAP</span></div>
   </div>
 </section>
 
@@ -55,6 +55,15 @@
   <div class="wrap">
     <div class="head"><h2>Studii de caz</h2><p class="muted">Fiecare caz arată datele de intrare, drumul parcurs, problemele întâlnite și corecțiile făcute.</p></div>
     <div class="pf-cards">
+      <a class="pf-card" href="/portfolio/suport-scanner-laser-robot-fea/">
+        <img src="/assets/portfolio/arm/welded-stress.jpg" alt="" loading="lazy">
+        <div class="pf-card-body">
+          <h3>Suport de scanner laser pe braț de robot: proiectare și analiză FEA</h3>
+          <p>Un singur reper care ține un profilometru laser de 1,48 kg la 320 mm în interiorul unei tăvi de baterii, montat pe flanșa robotului. Am pornit de la variante sudate din tablă, care nu au trecut pe Y și la vibrații, am întărit modelul, am găsit baza ca punct slab și am ajuns la un braț în secțiune închisă care respectă deplasarea admisă pe X, Y și Z, la 140,5 Hz.</p>
+          <div class="pf-tags"><span class="chip">FreeCAD</span><span class="chip">Gmsh</span><span class="chip">CalculiX</span><span class="chip">FEA static + modal</span><span class="chip">EN AW-6082 T6</span></div>
+          <span class="pf-more">Citește studiul de caz →</span>
+        </div>
+      </a>
       <a class="pf-card" href="/portfolio/dispozitive-sudura-caroserie/">
         <img src="/assets/portfolio/welding/fixture-assemblies.jpg" alt="" loading="lazy">
         <div class="pf-card-body">

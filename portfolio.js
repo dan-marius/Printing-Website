@@ -23,7 +23,7 @@ const UI = {
     nav: { cases: "Studii de caz", about: "Despre", contact: "Contact", shop: "proto3d" },
     switchTo: { label: "EN", title: "View in English", lang: "en" },
     title: "Dan Marius-Vasile – portofoliu inginerie mecanică și proiectare CAD",
-    desc: "Portofoliu de inginerie mecanică: dispozitive de sudură pentru caroserii auto, grippere, posturi robotizate, simulări de cinematică și verificări de coliziuni. CATIA V5, SolidWorks, Siemens NX, FreeCAD.",
+    desc: "Portofoliu de inginerie mecanică: analiză FEA, dispozitive de sudură pentru caroserii auto, grippere, posturi robotizate, simulări de cinematică și verificări de coliziuni. CATIA V5, SolidWorks, Siemens NX, FreeCAD.",
     role: "Inginer mecanic · Proiectare CAD, dispozitive și simulare",
     lead: "Peste 20 de ani în inginerie mecanică, proiectare de scule și dispozitive și producție de serie. Peste 15 ani de proiectare 3D: dispozitive de sudură pentru caroserii auto, grippere și posturi robotizate, cu simulări de cinematică și verificări de coliziuni, până la desene de execuție.",
     stats: [["20+", "ani în inginerie mecanică"], ["100+", "dispozitive de sudură, grippere și posturi proiectate"], ["15+", "ani de proiectare 3D, zilnic"], ["40+", "familii de produse industrializate"]],
@@ -34,18 +34,19 @@ const UI = {
     contactH: "Contact", contactP: "Pentru proiecte de proiectare, dispozitive sau simulare, scrie-mi direct.",
     phone: "Telefon", email: "E-mail",
     back: "Toate studiile de caz", next: "Următorul caz",
-    sec: { context: "Context", inputs: "Date de intrare", path: "Drumul parcurs", models: "Modele testate", problems: "Probleme și corecții", video: "Piesa în funcțiune", gallery: "Imagini din proiecte", skills: "Ce demonstrează" },
+    sec: { context: "Context", inputs: "Date de intrare", path: "Drumul parcurs", requirements: "Cerințele clientului", models: "Modele testate", problems: "Probleme și corecții", results: "Rezultatul final", video: "Piesa în funcțiune", gallery: "Imagini din proiecte", skills: "Ce demonstrează" },
     problem: "Problema", correction: "Corecția", result: "Rezultat",
     schematic: "Schemă explicativă, redesenată pentru portofoliu",
     meta: { period: "Perioadă", role: "Rol", tools: "Instrumente", programmes: "Programe", materials: "Materiale" },
     tested: "Testat", outcome: "Concluzie",
+    reqCols: ["Cerință", "Limită"], resCols: ["Verificare", "Limită", "Obținut", ""],
     footer: "Portofoliu de inginerie"
   },
   en: {
     nav: { cases: "Case studies", about: "About", contact: "Contact", shop: "proto3d" },
     switchTo: { label: "RO", title: "Vezi în română", lang: "ro" },
     title: "Dan Marius-Vasile – mechanical engineering and CAD design portfolio",
-    desc: "Mechanical engineering portfolio: body in white welding fixtures, grippers, robotic stations, kinematics simulation and collision checking. CATIA V5, SolidWorks, Siemens NX, FreeCAD.",
+    desc: "Mechanical engineering portfolio: FEA, body in white welding fixtures, grippers, robotic stations, kinematics simulation and collision checking. CATIA V5, SolidWorks, Siemens NX, FreeCAD.",
     role: "Mechanical engineer · CAD design, tooling and simulation",
     lead: "Over 20 years in mechanical engineering, tooling design and series production. Over 15 years of 3D design: body in white welding fixtures, grippers and robotic stations, with kinematics simulation and collision checking, through to production drawings.",
     stats: [["20+", "years in mechanical engineering"], ["100+", "welding fixtures, grippers and stations designed"], ["15+", "years of 3D design, used daily"], ["40+", "product families industrialised"]],
@@ -56,16 +57,17 @@ const UI = {
     contactH: "Contact", contactP: "For design, tooling or simulation work, get in touch directly.",
     phone: "Phone", email: "Email",
     back: "All case studies", next: "Next case",
-    sec: { context: "Context", inputs: "Inputs", path: "The path taken", models: "Models tested", problems: "Problems and corrections", video: "The part in use", gallery: "Project images", skills: "What it shows" },
+    sec: { context: "Context", inputs: "Inputs", path: "The path taken", requirements: "Client requirements", models: "Models tested", problems: "Problems and corrections", results: "Final result", video: "The part in use", gallery: "Project images", skills: "What it shows" },
     problem: "Problem", correction: "Correction", result: "Result",
     schematic: "Explanatory schematic, redrawn for this portfolio",
     meta: { period: "Period", role: "Role", tools: "Tools", programmes: "Programmes", materials: "Materials" },
     tested: "Tested", outcome: "Outcome",
+    reqCols: ["Requirement", "Limit"], resCols: ["Check", "Limit", "Achieved", ""],
     footer: "Engineering portfolio"
   }
 };
 
-const TOOLS = ["CATIA V5", "SolidWorks", "Siemens NX", "AutoCAD", "FreeCAD", "Python", "SAP"];
+const TOOLS = ["CATIA V5", "SolidWorks", "Siemens NX", "AutoCAD", "FreeCAD", "Gmsh + CalculiX (FEA)", "Python", "SAP"];
 
 /* ---------- explanatory schematics (inline SVG, labels per language) ---------- */
 const SVG = {
@@ -150,6 +152,144 @@ const SVG = {
 
 /* ---------- case studies ---------- */
 const CASES = [
+  {
+    id: "arm",
+    slug: { ro: "suport-scanner-laser-robot-fea", en: "robot-laser-scanner-mount-fea" },
+    cover: "welded-stress.jpg",
+    tags: ["FreeCAD", "Gmsh", "CalculiX", "FEA static + modal", "EN AW-6082 T6"],
+    ro: {
+      title: "Suport de scanner laser pe braț de robot: proiectare și analiză FEA",
+      summary: "Un singur reper care ține un profilometru laser de 1,48 kg la 320 mm în interiorul unei tăvi de baterii, montat pe flanșa robotului. Am pornit de la variante sudate din tablă, care nu au trecut pe Y și la vibrații, am întărit modelul, am găsit baza ca punct slab și am ajuns la un braț în secțiune închisă care respectă deplasarea admisă pe X, Y și Z, la 140,5 Hz.",
+      meta: { period: "Noiembrie 2026", role: "Proiectare și analiză FEA, proiect propriu", tools: "FreeCAD, Gmsh, CalculiX", materials: "Aluminiu EN AW-6082 T6" },
+      context: [
+        "Un robot scanează cu un profilometru laser cordonul de etanșare dintr-o tavă de baterii. Senzorul trebuie dus la 320 mm în interiorul peretelui tăvii, în timp ce flanșa robotului rămâne în afara lui, iar suportul trebuie să treacă printre turnurile de prindere, stiva de module și tavanul portalului.",
+        "Suportul trebuie să fie ușor, ca să nu încarce încheietura robotului, dar destul de rigid încât spotul laserului să nu se miște mai mult de 0,05 mm la accelerațiile robotului, iar prima frecvență proprie să rămână peste 110 Hz."
+      ],
+      inputs: [
+        "Senzorul: profilometru laser de 1,48 kg, cu centrul de masă și momentele de inerție date, prins doar pe fața de sus cu 3 șuruburi M4.",
+        "Flanșa robotului ISO 9409-1-50 cu 4 × M6, și cilindrul încheieturii (Ø160 × 260 mm) care nu are voie să fie atins.",
+        "Volumele interzise: podeaua, peretele tăvii, stiva de module, cele două turnuri de prindere, tavanul și volumul fasciculului laser.",
+        "Traseul de intrare: alunecare în tavă, coborâre 200 mm și baleiere ±40 mm, cu minim 3 mm distanță față de tot ce este în jur.",
+        "Materialul și fabricația: EN AW-6082 T6; frezare CNC, sudură și tablă tăiată cu laser, fără tablă îndoită."
+      ],
+      requirements: [
+        ["Deplasarea spotului laser, sub 25 m/s² pe X, Y și Z pe rând", "≤ 0,05 mm pe fiecare direcție"],
+        ["Prima frecvență proprie", "≥ 110 Hz"],
+        ["Masa suportului (fără senzor)", "≤ 3,5 kg"],
+        ["Inerția la flanșă (cu senzor)", "≤ 0,55 kg·m²"],
+        ["Distanța pe tot traseul de intrare", "≥ 3 mm"],
+        ["Flanșa robotului", "ISO 9409-1-50, 4 × M6 pe Ø50"],
+        ["Prinderea senzorului", "doar pe fața de sus, 3 × M4, plan Ø10 în jurul fiecărei găuri"],
+        ["Pereți și găuri", "pereți ≥ 3 mm, găuri ≥ Ø3, fără goluri închise"],
+        ["Material", "EN AW-6082 T6: E = 70 GPa, ν = 0,3, ρ = 2700 kg/m³"]
+      ],
+      path: [
+        ["Cerințele, transformate în cazuri de calcul", "Trei cazuri statice, cu 25 m/s² pe X, Y și Z pe rând, și o analiză modală. Senzorul este un corp rigid legat de suport doar pe fața de sus, iar suportul este încastrat pe discul Ø63 al flanșei."],
+        ["Primele variante: construcție sudată", "Am modelat în FreeCAD un suport din plăci tăiate cu laser și sudate, cu nervuri și decupări de ușurare, poziționat direct în celula robotului, între volumele interzise.", "welded-cad.jpg"],
+        ["Rețea Gmsh și calcul CalculiX", "Am generat rețeaua de elemente finite cu Gmsh, mai fină la prinderea senzorului, și am rulat în CalculiX cele trei cazuri statice și analiza modală.", "welded-mesh.jpg"],
+        ["Citirea rezultatelor la spotul laser", "Am verificat deplasarea spotului pe fiecare direcție și prima frecvență proprie față de limitele clientului."],
+        ["Iterații: întărirea modelului", "Variantele sudate nu au trecut, mai ales pe Y și la vibrații. Am adăugat întărituri, dar baza dinspre flanșă rămânea prea slabă."],
+        ["Varianta finală", "Un braț în L în secțiune închisă, cu o bază rigidă la flanșă. Trece pe X, Y și Z, cu prima frecvență proprie de 140,5 Hz și 3,09 kg."]
+      ],
+      problems: [
+        {
+          images: [["welded-stress.jpg", "Tensiunile în varianta sudată: roșu, unde se concentrează"]],
+          title: "Varianta sudată ceda pe Y și la vibrații",
+          problem: "Construcția din plăci sudate, deschisă, era prea moale lateral: deplasarea spotului pe Y depășea 0,05 mm, iar prima frecvență proprie era sub limita de 110 Hz.",
+          correction: "Am adăugat întărituri: nervuri, plăci transversale și pereți suplimentari între flanșă și prinderea senzorului.",
+          result: "Rigiditatea a crescut, dar nu suficient, iar fiecare întăritură adăuga masă."
+        },
+        {
+          images: [["base-stress.jpg", "Tensiunile concentrate la baza dinspre flanșă"]],
+          title: "Baza era prea slabă",
+          problem: "Analiza a arătat că problema nu era brațul, ci baza: tensiunile se concentrau la legătura cu flanșa robotului, iar toată deformația pornea de acolo.",
+          correction: "Am renunțat la întăriturile adăugate pe braț și am refăcut suportul ca un braț în L în secțiune închisă, cu o bază rigidă la flanșă.",
+          result: "Deplasarea spotului a scăzut sub limită pe toate cele trei direcții, iar prima frecvență proprie a urcat la 140,5 Hz."
+        }
+      ],
+      results: [
+        ["Deplasare pe X, sub 25 m/s² pe X", "≤ 50 µm", "15,25 µm", true],
+        ["Deplasare pe Y, sub 25 m/s² pe Y", "≤ 50 µm", "38,81 µm", true],
+        ["Deplasare pe Z, sub 25 m/s² pe Z", "≤ 50 µm", "36,59 µm", true],
+        ["Prima frecvență proprie (analiză modală)", "≥ 110 Hz", "140,5 Hz", true],
+        ["Masa suportului, fără senzor", "≤ 3,5 kg", "3,09 kg", true]
+      ],
+      resultsNote: "Deplasarea maximă din model pentru fiecare caz și prima frecvență proprie, din rezultatele CalculiX. Masa rezultă din reacțiunea în reazem la 25 m/s², minus senzorul de 1,48 kg.",
+      gallery: [
+        ["final-disp-x.jpg", "Varianta finală, deplasarea pe X: maxim 15,25 µm."],
+        ["final-disp-y.jpg", "Varianta finală, deplasarea pe Y: maxim 38,81 µm."],
+        ["final-disp-z.jpg", "Varianta finală, deplasarea pe Z: maxim 36,59 µm."],
+        ["welded-mesh.jpg", "O variantă sudată, cu rețeaua de elemente finite și încastrarea pe flanșă (roșu)."]
+      ],
+      skills: ["Transformarea cerințelor clientului în cazuri de calcul", "Analiză statică și modală (Gmsh + CalculiX)", "Senzorul ca masă rigidă legată de suport", "Iterații de proiectare pe baza rezultatelor FEA", "Găsirea punctului slab din distribuția tensiunilor", "Proiectare pentru fabricație: sudură, CNC, tablă tăiată laser"]
+    },
+    en: {
+      title: "Robot-held laser scanner mount: design and FEA",
+      summary: "A single part that holds a 1.48 kg laser profiler 320 mm inside a battery tray, from the robot flange. I started with welded plate versions, which failed on Y and on vibration, stiffened the model, found the base was the weak point, and ended with a closed-section arm that keeps the laser spot within the allowed displacement on X, Y and Z, at 140.5 Hz.",
+      meta: { period: "November 2026", role: "Design and FEA, own project", tools: "FreeCAD, Gmsh, CalculiX", materials: "EN AW-6082 T6 aluminium" },
+      context: [
+        "A robot scans the sealing seam of a battery tray with a laser profiler. The sensor has to reach 320 mm inside the tray wall while the robot flange stays outside it, and the mount has to pass between the clamp towers, the module stack and the gantry ceiling.",
+        "The mount has to be light, so it doesn't load the robot's wrist, yet stiff enough that the laser spot moves no more than 0.05 mm under the robot's accelerations, with the first natural frequency above 110 Hz."
+      ],
+      inputs: [
+        "The sensor: a 1.48 kg laser profiler, with its centre of mass and inertia given, held only by its top face with 3 M4 screws.",
+        "The ISO 9409-1-50 robot flange with 4 × M6, and the wrist cylinder (Ø160 × 260 mm), which must not be touched.",
+        "The keep-out volumes: the floor, the tray wall, the module stack, the two clamp towers, the ceiling and the laser beam volume.",
+        "The entry path: slide into the tray, drop 200 mm and sweep ±40 mm, with at least 3 mm clearance to everything around.",
+        "Material and manufacturing: EN AW-6082 T6; CNC milling, welding and laser-cut plate, no bent plate."
+      ],
+      requirements: [
+        ["Laser spot displacement, under 25 m/s² along X, Y and Z in turn", "≤ 0.05 mm in each direction"],
+        ["First natural frequency", "≥ 110 Hz"],
+        ["Mount mass (sensor excluded)", "≤ 3.5 kg"],
+        ["Inertia at the flange (sensor included)", "≤ 0.55 kg·m²"],
+        ["Clearance along the whole entry path", "≥ 3 mm"],
+        ["Robot flange", "ISO 9409-1-50, 4 × M6 on Ø50"],
+        ["Sensor mounting", "top face only, 3 × M4, flat Ø10 around each hole"],
+        ["Walls and holes", "walls ≥ 3 mm, holes ≥ Ø3, no enclosed voids"],
+        ["Material", "EN AW-6082 T6: E = 70 GPa, ν = 0.3, ρ = 2700 kg/m³"]
+      ],
+      path: [
+        ["Requirements turned into load cases", "Three static cases, with 25 m/s² along X, Y and Z in turn, and a modal analysis. The sensor is a rigid body joined to the mount only at its top face, and the mount is fixed on the Ø63 flange disc."],
+        ["First versions: welded construction", "I modelled in FreeCAD a mount of laser-cut, welded plates with ribs and lightening cut-outs, placed directly in the robot cell between the keep-out volumes.", "welded-cad.jpg"],
+        ["Gmsh mesh and CalculiX solve", "I meshed the model with Gmsh, finer at the sensor interface, and ran the three static cases and the modal analysis in CalculiX.", "welded-mesh.jpg"],
+        ["Reading the results at the laser spot", "I checked the spot displacement in each direction and the first natural frequency against the client's limits."],
+        ["Iterations: stiffening the model", "The welded versions failed, mostly on Y and on vibration. I added reinforcements, but the base at the flange stayed too weak."],
+        ["Final version", "An L-shaped arm with a closed section and a stiff base at the flange. It passes on X, Y and Z, with a first natural frequency of 140.5 Hz at 3.09 kg."]
+      ],
+      problems: [
+        {
+          images: [["welded-stress.jpg", "Stress in the welded version: red is where it concentrates"]],
+          title: "The welded version failed on Y and on vibration",
+          problem: "The open, welded plate construction was too soft sideways: the spot displacement along Y was above 0.05 mm, and the first natural frequency was below the 110 Hz limit.",
+          correction: "I added reinforcements: ribs, cross plates and extra walls between the flange and the sensor interface.",
+          result: "Stiffness went up, but not enough, and every reinforcement added mass."
+        },
+        {
+          images: [["base-stress.jpg", "Stress concentrated at the base, next to the flange"]],
+          title: "The base was too weak",
+          problem: "The analysis showed the problem wasn't the arm but the base: the stress concentrated at the joint with the robot flange, and all the deflection started there.",
+          correction: "I dropped the reinforcements on the arm and rebuilt the mount as an L-shaped arm with a closed section and a stiff base at the flange.",
+          result: "The spot displacement dropped below the limit in all three directions, and the first natural frequency rose to 140.5 Hz."
+        }
+      ],
+      results: [
+        ["Displacement along X, under 25 m/s² along X", "≤ 50 µm", "15.25 µm", true],
+        ["Displacement along Y, under 25 m/s² along Y", "≤ 50 µm", "38.81 µm", true],
+        ["Displacement along Z, under 25 m/s² along Z", "≤ 50 µm", "36.59 µm", true],
+        ["First natural frequency (modal analysis)", "≥ 110 Hz", "140.5 Hz", true],
+        ["Mount mass, sensor excluded", "≤ 3.5 kg", "3.09 kg", true]
+      ],
+      resultsNote: "The maximum displacement in the model for each case and the first natural frequency, from the CalculiX results. The mass comes from the support reaction at 25 m/s², minus the 1.48 kg sensor.",
+      gallery: [
+        ["final-disp-x.jpg", "Final version, displacement along X: 15.25 µm maximum."],
+        ["final-disp-y.jpg", "Final version, displacement along Y: 38.81 µm maximum."],
+        ["final-disp-z.jpg", "Final version, displacement along Z: 36.59 µm maximum."],
+        ["welded-mesh.jpg", "A welded version, with the finite element mesh and the fixed flange support (red)."]
+      ],
+      skills: ["Turning client requirements into load cases", "Static and modal analysis (Gmsh + CalculiX)", "The sensor as a rigid mass joined to the mount", "Design iterations driven by FEA results", "Finding the weak point from the stress distribution", "Design for manufacturing: welding, CNC, laser-cut plate"]
+    }
+  },
   {
     id: "welding",
     slug: { ro: "dispozitive-sudura-caroserie", en: "body-in-white-welding-fixtures" },
@@ -496,7 +636,7 @@ module.exports = function buildPortfolio({ C, esc, icon }) {
       url: abs(base(lang)), telephone: C.phone, email: C.email,
       address: { "@type": "PostalAddress", addressLocality: "Baia Mare", addressCountry: "RO" },
       sameAs: [PERSON.linkedin, PERSON.github],
-      knowsAbout: ["CATIA V5", "SolidWorks", "Siemens NX", "Welding fixtures", "Body in white tooling", "Kinematics simulation", "FreeCAD", "Python"]
+      knowsAbout: ["CATIA V5", "SolidWorks", "Siemens NX", "Welding fixtures", "Body in white tooling", "Kinematics simulation", "Finite element analysis", "FreeCAD", "CalculiX", "Python"]
     };
     const cover = CASES[0] ? img(CASES[0], CASES[0].cover) : "/assets/gallery-6.jpg";
     return `${head(lang, t.title, t.desc, base(lang), altUrls, cover, ld)}
@@ -588,7 +728,17 @@ ${header(lang, altUrls, false)}
     </div>
   </section>
 
-  <section class="block alt">
+  ${d.requirements ? `<section class="block alt">
+    <div class="wrap">
+      <div class="head"><h2>${esc(t.sec.requirements)}</h2></div>
+      <div class="pf-table-wrap"><table class="pf-table">
+        <thead><tr>${t.reqCols.map((h) => `<th>${esc(h)}</th>`).join("")}</tr></thead>
+        <tbody>${d.requirements.map(([a, b]) => `<tr><td>${esc(a)}</td><td>${esc(b)}</td></tr>`).join("")}</tbody>
+      </table></div>
+    </div>
+  </section>` : ""}
+
+  <section class="block${d.requirements ? "" : " alt"}">
     <div class="wrap">
       <div class="head"><h2>${esc(t.sec.path)}</h2></div>
       <ol class="pf-path">
@@ -615,7 +765,7 @@ ${header(lang, altUrls, false)}
     </div>
   </section>` : ""}
 
-  <section class="block${d.models ? " alt" : ""}">
+  <section class="block${d.models || d.requirements ? " alt" : ""}">
     <div class="wrap">
       <div class="head"><h2>${esc(t.sec.problems)}</h2></div>
       ${d.problems.map((p, n) => `<div class="pf-problem">
@@ -632,6 +782,16 @@ ${header(lang, altUrls, false)}
       </div>`).join("\n      ")}
     </div>
   </section>
+
+  ${d.results ? `<section class="block">
+    <div class="wrap">
+      <div class="head"><h2>${esc(t.sec.results)}</h2>${d.resultsNote ? `<p class="muted">${esc(d.resultsNote)}</p>` : ""}</div>
+      <div class="pf-table-wrap"><table class="pf-table">
+        <thead><tr>${t.resCols.map((h) => `<th>${esc(h)}</th>`).join("")}</tr></thead>
+        <tbody>${d.results.map(([a, lim, got, ok]) => `<tr><td>${esc(a)}</td><td>${esc(lim)}</td><td><strong>${esc(got)}</strong></td><td class="${ok ? "ok" : "fail"}">${ok ? "✓" : "✗"}</td></tr>`).join("")}</tbody>
+      </table></div>
+    </div>
+  </section>` : ""}
 
   ${d.video ? `<section class="block">
     <div class="wrap">

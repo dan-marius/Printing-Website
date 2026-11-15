@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suport de scanner laser pe braț de robot: proiectare și analiză FEA – Dan Marius-Vasile</title>
+<meta name="description" content="Un singur reper care ține un profilometru laser de 1,48 kg la 320 mm în interiorul unei tăvi de baterii, montat pe flanșa robotului. Am pornit de la variante sudate din tablă, care nu au trecut pe Y și la vibrații, am întărit modelul, am găsit baza ca punct slab și am ajuns la un braț în secțiune închisă care respectă deplasarea admisă pe X, Y și Z, la 140,5 Hz.">
+<link rel="canonical" href="https://proto3d.eu/portfolio/suport-scanner-laser-robot-fea/">
+<link rel="alternate" hreflang="ro" href="https://proto3d.eu/portfolio/suport-scanner-laser-robot-fea/">
+<link rel="alternate" hreflang="en" href="https://proto3d.eu/en/portfolio/robot-laser-scanner-mount-fea/">
+<link rel="alternate" hreflang="x-default" href="https://proto3d.eu/portfolio/suport-scanner-laser-robot-fea/">
+<meta property="og:title" content="Suport de scanner laser pe braț de robot: proiectare și analiză FEA – Dan Marius-Vasile">
+<meta property="og:description" content="Un singur reper care ține un profilometru laser de 1,48 kg la 320 mm în interiorul unei tăvi de baterii, montat pe flanșa robotului. Am pornit de la variante sudate din tablă, care nu au trecut pe Y și la vibrații, am întărit modelul, am găsit baza ca punct slab și am ajuns la un braț în secțiune închisă care respectă deplasarea admisă pe X, Y și Z, la 140,5 Hz.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://proto3d.eu/portfolio/suport-scanner-laser-robot-fea/">
+<meta property="og:image" content="https://proto3d.eu/assets/portfolio/arm/welded-stress.jpg">
+<meta property="og:locale" content="ro_RO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#14171b">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Suport de scanner laser pe braț de robot: proiectare și analiză FEA","description":"Un singur reper care ține un profilometru laser de 1,48 kg la 320 mm în interiorul unei tăvi de baterii, montat pe flanșa robotului. Am pornit de la variante sudate din tablă, care nu au trecut pe Y și la vibrații, am întărit modelul, am găsit baza ca punct slab și am ajuns la un braț în secțiune închisă care respectă deplasarea admisă pe X, Y și Z, la 140,5 Hz.","url":"https://proto3d.eu/portfolio/suport-scanner-laser-robot-fea/","inLanguage":"ro","image":"https://proto3d.eu/assets/portfolio/arm/welded-stress.jpg","author":{"@type":"Person","name":"Dan Marius-Vasile","url":"https://proto3d.eu/portfolio/"}}</script>
+</head>
+<body class="pf">
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand pf-brand" href="/portfolio/"><span class="mono">DM</span><span>Dan Marius-Vasile</span></a>
+    <nav aria-label="Main">
+      <div class="links">
+        <a href="/portfolio/#cases">Studii de caz</a>
+        <a href="/portfolio/#contact">Contact</a>
+        <a href="/">proto3d ↗</a>
+      </div>
+      <a class="lang" href="/en/portfolio/robot-laser-scanner-mount-fea/" hreflang="en" lang="en" title="View in English">EN</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero pf-hero pf-case-hero">
+  <div class="wrap">
+    <a class="pf-back" href="/portfolio/#cases">← Toate studiile de caz</a>
+    <h1>Suport de scanner laser pe braț de robot: proiectare și analiză FEA</h1>
+    <p class="lead">Un singur reper care ține un profilometru laser de 1,48 kg la 320 mm în interiorul unei tăvi de baterii, montat pe flanșa robotului. Am pornit de la variante sudate din tablă, care nu au trecut pe Y și la vibrații, am întărit modelul, am găsit baza ca punct slab și am ajuns la un braț în secțiune închisă care respectă deplasarea admisă pe X, Y și Z, la 140,5 Hz.</p>
+    <dl class="pf-meta">
+      <div><dt>Perioadă</dt><dd>Noiembrie 2026</dd></div>
+      <div><dt>Rol</dt><dd>Proiectare și analiză FEA, proiect propriu</dd></div>
+      <div><dt>Instrumente</dt><dd>FreeCAD, Gmsh, CalculiX</dd></div>
+      <div><dt>Materiale</dt><dd>Aluminiu EN AW-6082 T6</dd></div>
+    </dl>
+  </div>
+</section>
+
+<article class="pf-article">
+  <section class="block">
+    <div class="wrap pf-two">
+      <div>
+        <h2>Context</h2>
+        <p>Un robot scanează cu un profilometru laser cordonul de etanșare dintr-o tavă de baterii. Senzorul trebuie dus la 320 mm în interiorul peretelui tăvii, în timp ce flanșa robotului rămâne în afara lui, iar suportul trebuie să treacă printre turnurile de prindere, stiva de module și tavanul portalului.</p>
+        <p>Suportul trebuie să fie ușor, ca să nu încarce încheietura robotului, dar destul de rigid încât spotul laserului să nu se miște mai mult de 0,05 mm la accelerațiile robotului, iar prima frecvență proprie să rămână peste 110 Hz.</p>
+      </div>
+      <div class="panel">
+        <h3>Date de intrare</h3>
+        <ul class="pf-list"><li>Senzorul: profilometru laser de 1,48 kg, cu centrul de masă și momentele de inerție date, prins doar pe fața de sus cu 3 șuruburi M4.</li><li>Flanșa robotului ISO 9409-1-50 cu 4 × M6, și cilindrul încheieturii (Ø160 × 260 mm) care nu are voie să fie atins.</li><li>Volumele interzise: podeaua, peretele tăvii, stiva de module, cele două turnuri de prindere, tavanul și volumul fasciculului laser.</li><li>Traseul de intrare: alunecare în tavă, coborâre 200 mm și baleiere ±40 mm, cu minim 3 mm distanță față de tot ce este în jur.</li><li>Materialul și fabricația: EN AW-6082 T6; frezare CNC, sudură și tablă tăiată cu laser, fără tablă îndoită.</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block alt">
+    <div class="wrap">
+      <div class="head"><h2>Cerințele clientului</h2></div>
+      <div class="pf-table-wrap"><table class="pf-table">
+        <thead><tr><th>Cerință</th><th>Limită</th></tr></thead>
+        <tbody><tr><td>Deplasarea spotului laser, sub 25 m/s² pe X, Y și Z pe rând</td><td>≤ 0,05 mm pe fiecare direcție</td></tr><tr><td>Prima frecvență proprie</td><td>≥ 110 Hz</td></tr><tr><td>Masa suportului (fără senzor)</td><td>≤ 3,5 kg</td></tr><tr><td>Inerția la flanșă (cu senzor)</td><td>≤ 0,55 kg·m²</td></tr><tr><td>Distanța pe tot traseul de intrare</td><td>≥ 3 mm</td></tr><tr><td>Flanșa robotului</td><td>ISO 9409-1-50, 4 × M6 pe Ø50</td></tr><tr><td>Prinderea senzorului</td><td>doar pe fața de sus, 3 × M4, plan Ø10 în jurul fiecărei găuri</td></tr><tr><td>Pereți și găuri</td><td>pereți ≥ 3 mm, găuri ≥ Ø3, fără goluri închise</td></tr><tr><td>Material</td><td>EN AW-6082 T6: E = 70 GPa, ν = 0,3, ρ = 2700 kg/m³</td></tr></tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="head"><h2>Drumul parcurs</h2></div>
+      <ol class="pf-path">
+        <li><h3>Cerințele, transformate în cazuri de calcul</h3><p>Trei cazuri statice, cu 25 m/s² pe X, Y și Z pe rând, și o analiză modală. Senzorul este un corp rigid legat de suport doar pe fața de sus, iar suportul este încastrat pe discul Ø63 al flanșei.</p></li>
+        <li class="has-pic"><a href="/assets/portfolio/arm/welded-cad.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/arm/welded-cad.jpg" alt="Primele variante: construcție sudată" loading="lazy"></a><h3>Primele variante: construcție sudată</h3><p>Am modelat în FreeCAD un suport din plăci tăiate cu laser și sudate, cu nervuri și decupări de ușurare, poziționat direct în celula robotului, între volumele interzise.</p></li>
+        <li class="has-pic"><a href="/assets/portfolio/arm/welded-mesh.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/arm/welded-mesh.jpg" alt="Rețea Gmsh și calcul CalculiX" loading="lazy"></a><h3>Rețea Gmsh și calcul CalculiX</h3><p>Am generat rețeaua de elemente finite cu Gmsh, mai fină la prinderea senzorului, și am rulat în CalculiX cele trei cazuri statice și analiza modală.</p></li>
+        <li><h3>Citirea rezultatelor la spotul laser</h3><p>Am verificat deplasarea spotului pe fiecare direcție și prima frecvență proprie față de limitele clientului.</p></li>
+        <li><h3>Iterații: întărirea modelului</h3><p>Variantele sudate nu au trecut, mai ales pe Y și la vibrații. Am adăugat întărituri, dar baza dinspre flanșă rămânea prea slabă.</p></li>
+        <li><h3>Varianta finală</h3><p>Un braț în L în secțiune închisă, cu o bază rigidă la flanșă. Trece pe X, Y și Z, cu prima frecvență proprie de 140,5 Hz și 3,09 kg.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  
+
+  <section class="block alt">
+    <div class="wrap">
+      <div class="head"><h2>Probleme și corecții</h2></div>
+      <div class="pf-problem">
+        <div class="pf-problem-text">
+          <span class="pf-num">01</span>
+          <h3>Varianta sudată ceda pe Y și la vibrații</h3>
+          <p><strong class="bad">Problema.</strong> Construcția din plăci sudate, deschisă, era prea moale lateral: deplasarea spotului pe Y depășea 0,05 mm, iar prima frecvență proprie era sub limita de 110 Hz.</p>
+          <p><strong class="good">Corecția.</strong> Am adăugat întărituri: nervuri, plăci transversale și pereți suplimentari între flanșă și prinderea senzorului.</p>
+          <p><strong>Rezultat.</strong> Rigiditatea a crescut, dar nu suficient, iar fiecare întăritură adăuga masă.</p>
+        </div>
+        <figure class="pf-photos pf-photos-1"><a href="/assets/portfolio/arm/welded-stress.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/arm/welded-stress.jpg" alt="Tensiunile în varianta sudată: roșu, unde se concentrează" loading="lazy"></a><figcaption>Tensiunile în varianta sudată: roșu, unde se concentrează</figcaption></figure>
+      </div>
+      <div class="pf-problem">
+        <div class="pf-problem-text">
+          <span class="pf-num">02</span>
+          <h3>Baza era prea slabă</h3>
+          <p><strong class="bad">Problema.</strong> Analiza a arătat că problema nu era brațul, ci baza: tensiunile se concentrau la legătura cu flanșa robotului, iar toată deformația pornea de acolo.</p>
+          <p><strong class="good">Corecția.</strong> Am renunțat la întăriturile adăugate pe braț și am refăcut suportul ca un braț în L în secțiune închisă, cu o bază rigidă la flanșă.</p>
+          <p><strong>Rezultat.</strong> Deplasarea spotului a scăzut sub limită pe toate cele trei direcții, iar prima frecvență proprie a urcat la 140,5 Hz.</p>
+        </div>
+        <figure class="pf-photos pf-photos-1"><a href="/assets/portfolio/arm/base-stress.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/arm/base-stress.jpg" alt="Tensiunile concentrate la baza dinspre flanșă" loading="lazy"></a><figcaption>Tensiunile concentrate la baza dinspre flanșă</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="head"><h2>Rezultatul final</h2><p class="muted">Deplasarea maximă din model pentru fiecare caz și prima frecvență proprie, din rezultatele CalculiX. Masa rezultă din reacțiunea în reazem la 25 m/s², minus senzorul de 1,48 kg.</p></div>
+      <div class="pf-table-wrap"><table class="pf-table">
+        <thead><tr><th>Verificare</th><th>Limită</th><th>Obținut</th><th></th></tr></thead>
+        <tbody><tr><td>Deplasare pe X, sub 25 m/s² pe X</td><td>≤ 50 µm</td><td><strong>15,25 µm</strong></td><td class="ok">✓</td></tr><tr><td>Deplasare pe Y, sub 25 m/s² pe Y</td><td>≤ 50 µm</td><td><strong>38,81 µm</strong></td><td class="ok">✓</td></tr><tr><td>Deplasare pe Z, sub 25 m/s² pe Z</td><td>≤ 50 µm</td><td><strong>36,59 µm</strong></td><td class="ok">✓</td></tr><tr><td>Prima frecvență proprie (analiză modală)</td><td>≥ 110 Hz</td><td><strong>140,5 Hz</strong></td><td class="ok">✓</td></tr><tr><td>Masa suportului, fără senzor</td><td>≤ 3,5 kg</td><td><strong>3,09 kg</strong></td><td class="ok">✓</td></tr></tbody>
+      </table></div>
+    </div>
+  </section>
+
+  
+
+  <section class="block alt">
+    <div class="wrap">
+      <div class="head"><h2>Imagini din proiecte</h2></div>
+      <div class="pf-gallery">
+        <figure><a href="/assets/portfolio/arm/final-disp-x.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/arm/final-disp-x.jpg" alt="Varianta finală, deplasarea pe X: maxim 15,25 µm." loading="lazy"></a><figcaption>Varianta finală, deplasarea pe X: maxim 15,25 µm.</figcaption></figure>
+        <figure><a href="/assets/portfolio/arm/final-disp-y.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/arm/final-disp-y.jpg" alt="Varianta finală, deplasarea pe Y: maxim 38,81 µm." loading="lazy"></a><figcaption>Varianta finală, deplasarea pe Y: maxim 38,81 µm.</figcaption></figure>
+        <figure><a href="/assets/portfolio/arm/final-disp-z.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/arm/final-disp-z.jpg" alt="Varianta finală, deplasarea pe Z: maxim 36,59 µm." loading="lazy"></a><figcaption>Varianta finală, deplasarea pe Z: maxim 36,59 µm.</figcaption></figure>
+        <figure><a href="/assets/portfolio/arm/welded-mesh.jpg" target="_blank" rel="noopener"><img src="/assets/portfolio/arm/welded-mesh.jpg" alt="O variantă sudată, cu rețeaua de elemente finite și încastrarea pe flanșă (roșu)." loading="lazy"></a><figcaption>O variantă sudată, cu rețeaua de elemente finite și încastrarea pe flanșă (roșu).</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="head"><h2>Ce demonstrează</h2></div>
+      <ul class="pf-skills"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Transformarea cerințelor clientului în cazuri de calcul</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Analiză statică și modală (Gmsh + CalculiX)</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Senzorul ca masă rigidă legată de suport</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Iterații de proiectare pe baza rezultatelor FEA</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Găsirea punctului slab din distribuția tensiunilor</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Proiectare pentru fabricație: sudură, CNC, tablă tăiată laser</li></ul>
+      <p class="pf-next"><a class="btn primary" href="/portfolio/dispozitive-sudura-caroserie/">Următorul caz: Dispozitive de sudură robotizată pentru caroserii auto →</a></p>
+    </div>
+  </section>
+</article>
+<section id="contact" class="block alt">
+  <div class="wrap">
+    <div class="head"><h2>Contact</h2><p class="muted">Pentru proiecte de proiectare, dispozitive sau simulare, scrie-mi direct.</p></div>
+    <div class="pf-contact">
+      <a class="line" href="mailto:dan_marius_8@yahoo.com" data-mail><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span><small>E-mail</small>dan_marius_8@yahoo.com</span></a>
+      <a class="line" href="tel:+40751890165" data-tel><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span><small>Telefon</small>+40751890165</span></a>
+      <a class="line" href="https://www.linkedin.com/in/dan-marius-17394a5" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 11v6"/></svg><span><small>LinkedIn</small>dan-marius-17394a5</span></a>
+      <a class="line" href="https://github.com/dan-marius" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></svg><span><small>GitHub</small>dan-marius</span></a>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap foot">
+    <span class="brand pf-brand"><span class="mono">DM</span><span>Dan Marius-Vasile</span></span>
+    <span>© 2026 · Portofoliu de inginerie · <a href="/">proto3d.eu</a></span>
+  </div>
+</footer>
+</body>
+</html>

@@ -4,22 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dan Marius-Vasile – mechanical engineering and CAD design portfolio</title>
-<meta name="description" content="Mechanical engineering portfolio: body in white welding fixtures, grippers, robotic stations, kinematics simulation and collision checking. CATIA V5, SolidWorks, Siemens NX, FreeCAD.">
+<meta name="description" content="Mechanical engineering portfolio: FEA, body in white welding fixtures, grippers, robotic stations, kinematics simulation and collision checking. CATIA V5, SolidWorks, Siemens NX, FreeCAD.">
 <link rel="canonical" href="https://proto3d.eu/en/portfolio/">
 <link rel="alternate" hreflang="ro" href="https://proto3d.eu/portfolio/">
 <link rel="alternate" hreflang="en" href="https://proto3d.eu/en/portfolio/">
 <link rel="alternate" hreflang="x-default" href="https://proto3d.eu/portfolio/">
 <meta property="og:title" content="Dan Marius-Vasile – mechanical engineering and CAD design portfolio">
-<meta property="og:description" content="Mechanical engineering portfolio: body in white welding fixtures, grippers, robotic stations, kinematics simulation and collision checking. CATIA V5, SolidWorks, Siemens NX, FreeCAD.">
+<meta property="og:description" content="Mechanical engineering portfolio: FEA, body in white welding fixtures, grippers, robotic stations, kinematics simulation and collision checking. CATIA V5, SolidWorks, Siemens NX, FreeCAD.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://proto3d.eu/en/portfolio/">
-<meta property="og:image" content="https://proto3d.eu/assets/portfolio/welding/fixture-assemblies.jpg">
+<meta property="og:image" content="https://proto3d.eu/assets/portfolio/arm/welded-stress.jpg">
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#14171b">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Dan Marius-Vasile","jobTitle":"Mechanical engineer · CAD design, tooling and simulation","url":"https://proto3d.eu/en/portfolio/","telephone":"+40751890165","email":"dan_marius_8@yahoo.com","address":{"@type":"PostalAddress","addressLocality":"Baia Mare","addressCountry":"RO"},"sameAs":["https://www.linkedin.com/in/dan-marius-17394a5","https://github.com/dan-marius"],"knowsAbout":["CATIA V5","SolidWorks","Siemens NX","Welding fixtures","Body in white tooling","Kinematics simulation","FreeCAD","Python"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Dan Marius-Vasile","jobTitle":"Mechanical engineer · CAD design, tooling and simulation","url":"https://proto3d.eu/en/portfolio/","telephone":"+40751890165","email":"dan_marius_8@yahoo.com","address":{"@type":"PostalAddress","addressLocality":"Baia Mare","addressCountry":"RO"},"sameAs":["https://www.linkedin.com/in/dan-marius-17394a5","https://github.com/dan-marius"],"knowsAbout":["CATIA V5","SolidWorks","Siemens NX","Welding fixtures","Body in white tooling","Kinematics simulation","Finite element analysis","FreeCAD","CalculiX","Python"]}</script>
 </head>
 <body class="pf">
 <header class="top">
@@ -47,7 +47,7 @@
       <div><dt>15+</dt><dd>years of 3D design, used daily</dd></div>
       <div><dt>40+</dt><dd>product families industrialised</dd></div>
     </dl>
-    <div class="pf-tools"><span class="muted">Tools:</span> <span class="chip">CATIA V5</span> <span class="chip">SolidWorks</span> <span class="chip">Siemens NX</span> <span class="chip">AutoCAD</span> <span class="chip">FreeCAD</span> <span class="chip">Python</span> <span class="chip">SAP</span></div>
+    <div class="pf-tools"><span class="muted">Tools:</span> <span class="chip">CATIA V5</span> <span class="chip">SolidWorks</span> <span class="chip">Siemens NX</span> <span class="chip">AutoCAD</span> <span class="chip">FreeCAD</span> <span class="chip">Gmsh + CalculiX (FEA)</span> <span class="chip">Python</span> <span class="chip">SAP</span></div>
   </div>
 </section>
 
@@ -55,6 +55,15 @@
   <div class="wrap">
     <div class="head"><h2>Case studies</h2><p class="muted">Each case shows the inputs, the path taken, the problems found and the corrections made.</p></div>
     <div class="pf-cards">
+      <a class="pf-card" href="/en/portfolio/robot-laser-scanner-mount-fea/">
+        <img src="/assets/portfolio/arm/welded-stress.jpg" alt="" loading="lazy">
+        <div class="pf-card-body">
+          <h3>Robot-held laser scanner mount: design and FEA</h3>
+          <p>A single part that holds a 1.48 kg laser profiler 320 mm inside a battery tray, from the robot flange. I started with welded plate versions, which failed on Y and on vibration, stiffened the model, found the base was the weak point, and ended with a closed-section arm that keeps the laser spot within the allowed displacement on X, Y and Z, at 140.5 Hz.</p>
+          <div class="pf-tags"><span class="chip">FreeCAD</span><span class="chip">Gmsh</span><span class="chip">CalculiX</span><span class="chip">FEA static + modal</span><span class="chip">EN AW-6082 T6</span></div>
+          <span class="pf-more">Read the case study →</span>
+        </div>
+      </a>
       <a class="pf-card" href="/en/portfolio/body-in-white-welding-fixtures/">
         <img src="/assets/portfolio/welding/fixture-assemblies.jpg" alt="" loading="lazy">
         <div class="pf-card-body">

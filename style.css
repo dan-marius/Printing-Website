@@ -321,3 +321,13 @@ footer a{color:#fff}
   .pf-model img{min-height:0;height:240px}
   .pf-photos img{height:240px}
 }
+
+.pf-table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
+.pf-table{width:100%;border-collapse:collapse;font-size:.96rem}
+.pf-table th{text-align:left;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:14px 18px;border-bottom:1px solid var(--line);background:var(--bg)}
+.pf-table td{padding:12px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+.pf-table tr:last-child td{border-bottom:0}
+.pf-table td:first-child{color:#2c3238}
+.pf-table td.ok{color:#15803d;font-weight:800;text-align:center}
+.pf-table td.fail{color:#c2410c;font-weight:800;text-align:center}
+@media (max-width:560px){.pf-table th,.pf-table td{padding:10px 12px}.pf-table{font-size:.9rem}}
