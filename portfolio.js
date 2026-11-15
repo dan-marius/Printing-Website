@@ -193,14 +193,14 @@ const CASES = [
       ],
       problems: [
         {
-          images: [["welded-stress.jpg", "Tensiunile în varianta sudată: roșu, unde se concentrează"]],
+          images: [["welded-stress.jpg", "Tensiunile în varianta sudată: roșu, unde se concentrează", "full"]],
           title: "Varianta sudată ceda pe Y și la vibrații",
           problem: "Construcția din plăci sudate, deschisă, era prea moale lateral: deplasarea spotului pe Y depășea 0,05 mm, iar prima frecvență proprie era sub limita de 110 Hz.",
           correction: "Am adăugat întărituri: nervuri, plăci transversale și pereți suplimentari între flanșă și prinderea senzorului.",
           result: "Rigiditatea a crescut, dar nu suficient, iar fiecare întăritură adăuga masă."
         },
         {
-          images: [["base-stress.jpg", "Tensiunile concentrate la baza dinspre flanșă"]],
+          images: [["base-stress.jpg", "Tensiunile concentrate la baza dinspre flanșă", "full"]],
           title: "Baza era prea slabă",
           problem: "Analiza a arătat că problema nu era brațul, ci baza: tensiunile se concentrau la legătura cu flanșa robotului, iar toată deformația pornea de acolo.",
           correction: "Am renunțat la întăriturile adăugate pe braț și am refăcut suportul ca un braț în L în secțiune închisă, cu o bază rigidă la flanșă.",
@@ -259,14 +259,14 @@ const CASES = [
       ],
       problems: [
         {
-          images: [["welded-stress.jpg", "Stress in the welded version: red is where it concentrates"]],
+          images: [["welded-stress.jpg", "Stress in the welded version: red is where it concentrates", "full"]],
           title: "The welded version failed on Y and on vibration",
           problem: "The open, welded plate construction was too soft sideways: the spot displacement along Y was above 0.05 mm, and the first natural frequency was below the 110 Hz limit.",
           correction: "I added reinforcements: ribs, cross plates and extra walls between the flange and the sensor interface.",
           result: "Stiffness went up, but not enough, and every reinforcement added mass."
         },
         {
-          images: [["base-stress.jpg", "Stress concentrated at the base, next to the flange"]],
+          images: [["base-stress.jpg", "Stress concentrated at the base, next to the flange", "full"]],
           title: "The base was too weak",
           problem: "The analysis showed the problem wasn't the arm but the base: the stress concentrated at the joint with the robot flange, and all the deflection started there.",
           correction: "I dropped the reinforcements on the arm and rebuilt the mount as an L-shaped arm with a closed section and a stiff base at the flange.",
@@ -778,7 +778,7 @@ ${header(lang, altUrls, false)}
         </div>
         ${p.diagram
           ? `<figure class="pf-diagram">${SVG[p.diagram](L[p.diagram])}<figcaption>${esc(t.schematic)}</figcaption></figure>`
-          : `<figure class="pf-photos pf-photos-${p.images.length}">${p.images.map(([f, cap, focus]) => `<a href="${img(c, f)}" target="_blank" rel="noopener"><img src="${img(c, f)}" alt="${esc(cap)}" loading="lazy"${focus ? ` style="object-position:${focus}"` : ""}></a>`).join("")}<figcaption>${p.images.map(([, cap]) => esc(cap)).join(" · ")}</figcaption></figure>`}
+          : `<figure class="pf-photos pf-photos-${p.images.length}">${p.images.map(([f, cap, focus]) => `<a href="${img(c, f)}" target="_blank" rel="noopener"><img src="${img(c, f)}" alt="${esc(cap)}" loading="lazy"${focus === "full" ? ` style="height:auto;object-fit:contain"` : focus ? ` style="object-position:${focus}"` : ""}></a>`).join("")}<figcaption>${p.images.map(([, cap]) => esc(cap)).join(" · ")}</figcaption></figure>`}
       </div>`).join("\n      ")}
     </div>
   </section>
