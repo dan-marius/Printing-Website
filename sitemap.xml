@@ -2,38 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://proto3d.eu/</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://proto3d.eu/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://proto3d.eu/en/"/>
   </url>
   <url>
     <loc>https://proto3d.eu/en/</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://proto3d.eu/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://proto3d.eu/en/"/>
   </url>
   <url>
     <loc>https://proto3d.eu/portfolio/</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://proto3d.eu/portfolio/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://proto3d.eu/en/portfolio/"/>
   </url>
   <url>
     <loc>https://proto3d.eu/en/portfolio/</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://proto3d.eu/portfolio/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://proto3d.eu/en/portfolio/"/>
   </url>
   <url>
     <loc>https://proto3d.eu/portfolio/dispozitive-sudura-caroserie/</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://proto3d.eu/portfolio/dispozitive-sudura-caroserie/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://proto3d.eu/en/portfolio/body-in-white-welding-fixtures/"/>
   </url>
   <url>
     <loc>https://proto3d.eu/en/portfolio/body-in-white-welding-fixtures/</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://proto3d.eu/portfolio/dispozitive-sudura-caroserie/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://proto3d.eu/en/portfolio/body-in-white-welding-fixtures/"/>
+  </url>
+  <url>
+    <loc>https://proto3d.eu/portfolio/melc-pompa-ulei-drujba/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://proto3d.eu/portfolio/melc-pompa-ulei-drujba/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://proto3d.eu/en/portfolio/chainsaw-oil-pump-worm/"/>
+  </url>
+  <url>
+    <loc>https://proto3d.eu/en/portfolio/chainsaw-oil-pump-worm/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://proto3d.eu/portfolio/melc-pompa-ulei-drujba/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://proto3d.eu/en/portfolio/chainsaw-oil-pump-worm/"/>
   </url>
 </urlset>

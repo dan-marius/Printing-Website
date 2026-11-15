@@ -34,10 +34,11 @@ const UI = {
     contactH: "Contact", contactP: "Pentru proiecte de proiectare, dispozitive sau simulare, scrie-mi direct.",
     phone: "Telefon", email: "E-mail",
     back: "Toate studiile de caz", next: "Următorul caz",
-    sec: { context: "Context", inputs: "Date de intrare", path: "Drumul parcurs", problems: "Probleme și corecții", gallery: "Imagini din proiecte", skills: "Ce demonstrează" },
+    sec: { context: "Context", inputs: "Date de intrare", path: "Drumul parcurs", models: "Modele testate", problems: "Probleme și corecții", video: "Piesa în funcțiune", gallery: "Imagini din proiecte", skills: "Ce demonstrează" },
     problem: "Problema", correction: "Corecția", result: "Rezultat",
     schematic: "Schemă explicativă, redesenată pentru portofoliu",
-    meta: { period: "Perioadă", role: "Rol", tools: "Instrumente", programmes: "Programe" },
+    meta: { period: "Perioadă", role: "Rol", tools: "Instrumente", programmes: "Programe", materials: "Materiale" },
+    tested: "Testat", outcome: "Concluzie",
     footer: "Portofoliu de inginerie"
   },
   en: {
@@ -55,10 +56,11 @@ const UI = {
     contactH: "Contact", contactP: "For design, tooling or simulation work, get in touch directly.",
     phone: "Phone", email: "Email",
     back: "All case studies", next: "Next case",
-    sec: { context: "Context", inputs: "Inputs", path: "The path taken", problems: "Problems and corrections", gallery: "Project images", skills: "What it shows" },
+    sec: { context: "Context", inputs: "Inputs", path: "The path taken", models: "Models tested", problems: "Problems and corrections", video: "The part in use", gallery: "Project images", skills: "What it shows" },
     problem: "Problem", correction: "Correction", result: "Result",
     schematic: "Explanatory schematic, redrawn for this portfolio",
-    meta: { period: "Period", role: "Role", tools: "Tools", programmes: "Programmes" },
+    meta: { period: "Period", role: "Role", tools: "Tools", programmes: "Programmes", materials: "Materials" },
+    tested: "Tested", outcome: "Outcome",
     footer: "Engineering portfolio"
   }
 };
@@ -259,6 +261,136 @@ const CASES = [
       ],
       skills: ["3-2-1 locating on RPS points", "Kinematics simulation (DMU Kinematics)", "Gun and gripper collision checks", "Clamp arm stiffness under load", "Design trade-offs: access vs. stiffness", "Production drawings with GD&T and BOM"]
     }
+  },
+  {
+    id: "worm",
+    slug: { ro: "melc-pompa-ulei-drujba", en: "chainsaw-oil-pump-worm" },
+    cover: "freecad-assembly.jpg",
+    tags: ["FreeCAD", "Reverse engineering", "PLA → PETG", "Worm gear"],
+    ro: {
+      title: "Roată cu melc pentru pompa de ulei a unei drujbe: inginerie inversă",
+      summary: "Piesă de schimb pentru un client: am reconstruit roata dințată cu melc după piesa originală uzată, am testat un prototip din PLA, am corectat modelul după probă și am printat piesa finală din PETG.",
+      meta: { period: "Octombrie 2026", role: "Proiectare și fabricație, pentru un client", tools: "FreeCAD (Part Design), printare FDM", materials: "PLA (prototip), PETG (final)" },
+      context: [
+        "Pompa de ulei a drujbei, care unge lanțul, este antrenată printr-un angrenaj: roata dințată primește mișcarea, iar melcul de pe butucul ei antrenează pinionul pompei.",
+        "La piesa clientului, din plastic alb, spirele melcului și dinții roții erau uzați. Fără ea, pompa nu mai primește mișcare și lanțul nu mai este uns."
+      ],
+      inputs: [
+        "Fotografii ale piesei originale uzate, trimise de client: roata dințată cu melcul pe butuc.",
+        "Pinionul pompei cu care angrenează melcul.",
+        "Cerința: o piesă de schimb care să se monteze în locul originalei și să reziste la frecare și la căldura din funcționare."
+      ],
+      path: [
+        ["Analiza piesei originale", "Am identificat geometria din piesele originale: numărul de dinți ai roții, diametrele, pasul și profilul melcului, butucul și alezajul."],
+        ["Modelarea în FreeCAD", "Am modelat roata dințată cu melcul integrat și, separat, pinionul pompei, ca să pot verifica angrenarea în ansamblu."],
+        ["Prototip din PLA", "Am printat un prim model din PLA alb, rapid și ieftin, și l-am trimis clientului pentru probă."],
+        ["Corecții după probă", "Clientul a confirmat modificările: partea roții mai groasă și sensul de lucru inversat."],
+        ["Piesa finală din PETG", "Am printat modelul corectat din PETG negru, mai rezistent la frecare și la căldură decât PLA, și am verificat perpendicularitatea cu echerul."]
+      ],
+      models: [
+        { image: "pla-prototype.jpg", material: "PLA", name: "V1 – prototip de probă", text: "Primul model, printat din PLA alb ca să verificăm rapid forma, dimensiunile și angrenarea.", tested: "montajul și angrenarea la client.", outcome: "două modificări: roata mai groasă și sensul de lucru inversat." },
+        { image: "final-petg-square-check.jpg", material: "PETG", name: "V2 – piesa finală", text: "Modelul corectat, printat din PETG negru pentru frecare și căldură.", tested: "perpendicularitatea melcului față de roată, cu echerul.", outcome: "piesa finală pentru client." }
+      ],
+      problems: [
+        {
+          images: [["worn-worm-threads.webp", "Spirele melcului original, uzate"], ["worn-worm-side.webp", "Melcul uzat, din profil"]],
+          title: "Melcul original era uzat",
+          problem: "Spirele melcului de pe butucul roții erau tocite și rupte, iar dinții roții aveau urme de uzură. Piesa nu mai transmitea mișcarea la pompă.",
+          correction: "Am reconstruit geometria în FreeCAD și am modelat și pinionul pompei, ca să verific angrenarea înainte de printare.",
+          result: "Un model complet al ansamblului, gata de prototip."
+        },
+        {
+          images: [["pla-prototype-side.jpg", "Prototipul PLA, din profil"]],
+          title: "Roata prototipului era prea subțire",
+          problem: "La proba prototipului din PLA, partea roții dințate s-a dovedit prea subțire pentru montaj și pentru sarcina din funcționare.",
+          correction: "Am îngroșat partea roții în model, păstrând melcul și butucul.",
+          result: "Roata finală este mai rigidă și se așază corect."
+        },
+        {
+          images: [["pla-prototype.jpg", "Prototipul PLA", "50% 22%"]],
+          title: "Sensul de lucru era invers",
+          problem: "Prototipul a arătat că melcul lucra în sensul opus celui necesar pompei.",
+          correction: "Am inversat sensul de lucru al melcului în model.",
+          result: "Pompa este antrenată în sensul corect."
+        },
+        {
+          images: [["final-petg-square-check.jpg", "Piesa finală din PETG, verificată cu echerul", "40% 62%"]],
+          title: "PLA nu este potrivit pentru o piesă în frecare",
+          problem: "PLA este bun pentru prototip, dar se înmoaie la temperaturi relativ mici și nu este gândit pentru frecare continuă, ca într-un angrenaj de pe o drujbă.",
+          correction: "Am printat piesa finală din PETG, mai rezistent la frecare și la căldură.",
+          result: "Piesa finală, cu perpendicularitatea verificată cu echerul."
+        }
+      ],
+      gallery: [
+        ["original-parts.jpg", "Piesele originale: roata cu melc uzată și axul cu pinionul pompei."],
+        ["original-pinion.jpg", "Pinionul pompei, văzut de sus."],
+        ["freecad-assembly.jpg", "Ansamblul în FreeCAD: roata cu melc și pinionul pompei."],
+        ["worn-gear-back.webp", "Roata originală, fața din spate."]
+      ],
+      skills: ["Inginerie inversă după o piesă uzată", "Modelarea unui angrenaj cu melc în FreeCAD", "Verificarea angrenării în ansamblu", "Prototipare rapidă și iterație cu clientul", "Alegerea materialului după frecare și căldură", "Control dimensional: perpendicularitate"]
+    },
+    en: {
+      title: "Worm gear for a chainsaw oil pump: reverse engineering",
+      summary: "A replacement part for a customer: I rebuilt the worm gear from the worn original, tested a PLA prototype, corrected the model after the trial fit and printed the final part in PETG.",
+      meta: { period: "October 2026", role: "Design and manufacturing, for a customer", tools: "FreeCAD (Part Design), FDM printing", materials: "PLA (prototype), PETG (final)" },
+      context: [
+        "The chainsaw's oil pump, which lubricates the chain, is driven through a gear train: the gear wheel receives the motion, and the worm on its hub drives the pump pinion.",
+        "On the customer's part, made of white plastic, the worm threads and the gear teeth were worn. Without it, the pump gets no drive and the chain is no longer oiled."
+      ],
+      inputs: [
+        "Photos of the worn original part sent by the customer: the gear wheel with the worm on its hub.",
+        "The pump pinion that the worm meshes with.",
+        "The requirement: a replacement that fits in place of the original and withstands friction and operating heat."
+      ],
+      path: [
+        ["Analysing the original", "I identified the geometry from the original parts: the number of gear teeth, the diameters, the worm's pitch and profile, the hub and the bore."],
+        ["Modelling in FreeCAD", "I modelled the gear with the integrated worm and, separately, the pump pinion, so I could check the meshing in an assembly."],
+        ["PLA prototype", "I printed a first model in white PLA, quick and cheap, and sent it to the customer for a trial fit."],
+        ["Corrections after the trial", "The customer confirmed the changes: a thicker gear side and a reversed working direction."],
+        ["Final part in PETG", "I printed the corrected model in black PETG, which handles friction and heat better than PLA, and checked squareness with a try square."]
+      ],
+      models: [
+        { image: "pla-prototype.jpg", material: "PLA", name: "V1 – trial prototype", text: "The first model, printed in white PLA to check the shape, dimensions and meshing quickly.", tested: "fit and meshing at the customer's.", outcome: "two changes: a thicker gear and a reversed working direction." },
+        { image: "final-petg-square-check.jpg", material: "PETG", name: "V2 – final part", text: "The corrected model, printed in black PETG for friction and heat.", tested: "squareness of the worm to the gear, with a try square.", outcome: "the final part for the customer." }
+      ],
+      problems: [
+        {
+          images: [["worn-worm-threads.webp", "The original worm threads, worn"], ["worn-worm-side.webp", "The worn worm, side view"]],
+          title: "The original worm was worn",
+          problem: "The worm threads on the gear hub were worn down and broken, and the gear teeth showed wear. The part no longer drove the pump.",
+          correction: "I rebuilt the geometry in FreeCAD and also modelled the pump pinion, to check the meshing before printing.",
+          result: "A complete model of the assembly, ready for a prototype."
+        },
+        {
+          images: [["pla-prototype-side.jpg", "The PLA prototype, side view"]],
+          title: "The prototype gear was too thin",
+          problem: "At the trial fit of the PLA prototype, the gear side turned out too thin for the fit and for the working load.",
+          correction: "I thickened the gear side in the model, keeping the worm and hub unchanged.",
+          result: "The final gear is stiffer and seats correctly."
+        },
+        {
+          images: [["pla-prototype.jpg", "The PLA prototype", "50% 22%"]],
+          title: "The working direction was reversed",
+          problem: "The prototype showed that the worm worked in the opposite direction to what the pump needs.",
+          correction: "I reversed the worm's working direction in the model.",
+          result: "The pump is driven in the correct direction."
+        },
+        {
+          images: [["final-petg-square-check.jpg", "The final PETG part, checked with a try square", "40% 62%"]],
+          title: "PLA is not suited to a part under friction",
+          problem: "PLA is fine for a prototype, but it softens at relatively low temperatures and is not meant for continuous friction, as in a chainsaw gear train.",
+          correction: "I printed the final part in PETG, which handles friction and heat better.",
+          result: "The final part, with squareness checked using a try square."
+        }
+      ],
+      gallery: [
+        ["original-parts.jpg", "The original parts: the worn worm gear and the pump shaft with its pinion."],
+        ["original-pinion.jpg", "The pump pinion, seen from above."],
+        ["freecad-assembly.jpg", "The FreeCAD assembly: worm gear and pump pinion."],
+        ["worn-gear-back.webp", "The original gear, back face."]
+      ],
+      skills: ["Reverse engineering from a worn part", "Modelling a worm gear in FreeCAD", "Checking the meshing in an assembly", "Rapid prototyping and iteration with the customer", "Choosing the material for friction and heat", "Dimensional check: squareness"]
+    }
   }
 ];
 
@@ -435,7 +567,7 @@ ${header(lang, altUrls, false)}
     <h1>${esc(d.title)}</h1>
     <p class="lead">${esc(d.summary)}</p>
     <dl class="pf-meta">
-      ${Object.keys(t.meta).map((k) => `<div><dt>${esc(t.meta[k])}</dt><dd>${esc(d.meta[k])}</dd></div>`).join("\n      ")}
+      ${Object.keys(d.meta).map((k) => `<div><dt>${esc(t.meta[k])}</dt><dd>${esc(d.meta[k])}</dd></div>`).join("\n      ")}
     </dl>
   </div>
 </section>
@@ -463,7 +595,25 @@ ${header(lang, altUrls, false)}
     </div>
   </section>
 
-  <section class="block">
+  ${d.models ? `<section class="block">
+    <div class="wrap">
+      <div class="head"><h2>${esc(t.sec.models)}</h2></div>
+      <div class="pf-models">
+        ${d.models.map((m) => `<article class="pf-model">
+          <a href="${img(c, m.image)}" target="_blank" rel="noopener"><img src="${img(c, m.image)}" alt="${esc(m.name)}" loading="lazy"></a>
+          <div class="pf-model-body">
+            <span class="chip">${esc(m.material)}</span>
+            <h3>${esc(m.name)}</h3>
+            <p>${esc(m.text)}</p>
+            ${m.tested ? `<p><strong>${esc(t.tested)}:</strong> ${esc(m.tested)}</p>` : ""}
+            <p><strong>${esc(t.outcome)}:</strong> ${esc(m.outcome)}</p>
+          </div>
+        </article>`).join("\n        ")}
+      </div>
+    </div>
+  </section>` : ""}
+
+  <section class="block${d.models ? " alt" : ""}">
     <div class="wrap">
       <div class="head"><h2>${esc(t.sec.problems)}</h2></div>
       ${d.problems.map((p, n) => `<div class="pf-problem">
@@ -474,19 +624,30 @@ ${header(lang, altUrls, false)}
           <p><strong class="good">${esc(t.correction)}.</strong> ${esc(p.correction)}</p>
           <p><strong>${esc(t.result)}.</strong> ${esc(p.result)}</p>
         </div>
-        <figure class="pf-diagram">${SVG[p.diagram](L[p.diagram])}<figcaption>${esc(t.schematic)}</figcaption></figure>
+        ${p.diagram
+          ? `<figure class="pf-diagram">${SVG[p.diagram](L[p.diagram])}<figcaption>${esc(t.schematic)}</figcaption></figure>`
+          : `<figure class="pf-photos pf-photos-${p.images.length}">${p.images.map(([f, cap, focus]) => `<a href="${img(c, f)}" target="_blank" rel="noopener"><img src="${img(c, f)}" alt="${esc(cap)}" loading="lazy"${focus ? ` style="object-position:${focus}"` : ""}></a>`).join("")}<figcaption>${p.images.map(([, cap]) => esc(cap)).join(" · ")}</figcaption></figure>`}
       </div>`).join("\n      ")}
     </div>
   </section>
 
-  <section class="block alt">
+  ${d.video ? `<section class="block">
+    <div class="wrap">
+      <div class="head"><h2>${esc(t.sec.video)}</h2>${d.video.caption ? `<p class="muted">${esc(d.video.caption)}</p>` : ""}</div>
+      ${d.video.youtube
+        ? `<div class="pf-video"><iframe src="https://www.youtube-nocookie.com/embed/${esc(d.video.youtube)}" title="${esc(d.title)}" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`
+        : `<div class="pf-video"><video controls preload="metadata" playsinline${d.video.poster ? ` poster="${img(c, d.video.poster)}"` : ""}><source src="${img(c, d.video.file)}" type="video/mp4"></video></div>`}
+    </div>
+  </section>` : ""}
+
+  ${d.gallery && d.gallery.length ? `<section class="block alt">
     <div class="wrap">
       <div class="head"><h2>${esc(t.sec.gallery)}</h2></div>
       <div class="pf-gallery">
         ${d.gallery.map(([f, cap]) => `<figure><a href="${img(c, f)}" target="_blank" rel="noopener"><img src="${img(c, f)}" alt="${esc(cap)}" loading="lazy"></a><figcaption>${esc(cap)}</figcaption></figure>`).join("\n        ")}
       </div>
     </div>
-  </section>
+  </section>` : ""}
 
   <section class="block">
     <div class="wrap">
